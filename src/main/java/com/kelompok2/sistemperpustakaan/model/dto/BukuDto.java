@@ -1,27 +1,14 @@
-package com.kelompok2.sistemperpustakaan.model.entity;
+package com.kelompok2.sistemperpustakaan.model.dto;
 
 import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
 
-@Entity
-@Table(name = "data_buku")
-public class Buku {
-    @Id
-    @Column (name = "id_buku")
+public class BukuDto {
     private String idbuku;
-    @Column (name = "judul_buku")
     private String judulbuku;
-    @Column (name = "penulis_buku")
     private String penulisbuku;
-    @Column (name = "penerbit_buku")
     private String penerbitbuku;
-    @Column (name = "tahun_terbit")
     private Integer tahunterbit;
-    @Column (name = "lokasi_rak")
     private String lokasirak;
-    @Column (name = "jml_buku")
     private Integer jmlbuku;
 
     public String getIdbuku() {

@@ -1,6 +1,6 @@
 package com.kelompok2.sistemperpustakaan.model.dto;
 
-public class DefaultResponse {
+public class DefaultResponse<T> {
     private Boolean status;
     private String message;
 
