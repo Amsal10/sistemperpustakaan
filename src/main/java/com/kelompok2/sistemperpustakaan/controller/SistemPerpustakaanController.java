@@ -20,6 +20,7 @@ public class SistemPerpustakaanController {
 
     @Autowired
     private BukuRepository bukuRepository;
+    //komentar
 
 
     @PostMapping("/login")
@@ -40,8 +41,8 @@ public class SistemPerpustakaanController {
         return df;
     }
 
-    @GetMapping("/byid/{idbuku}")
-    public DefaultResponse getByIdBuku(@PathVariable String idbuku){
+    @GetMapping("/byid/{idbuku}/namabuku/{namabuku}")
+    public DefaultResponse getByIdBuku(@PathVariable String idbuku, @PathVariable String namabuku){
 
         DefaultResponse df = new DefaultResponse();
         Optional<Buku> optionalBuku = bukuRepository.findById(idbuku);
