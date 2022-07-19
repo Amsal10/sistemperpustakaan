@@ -43,7 +43,6 @@ public class AnggotaController {
         if (optional.isPresent()) {
             response.setMessage("Data Ditemukan");
             response.setStatus(Boolean.TRUE);
-            response.setData(convertEntityToDto(optional.get()));
         } else {
             response.setMessage("Data Tidak Ditemukan");
             response.setStatus(Boolean.FALSE);

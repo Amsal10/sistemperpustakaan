@@ -4,16 +4,6 @@ public class DefaultResponse<T> {
     private Boolean status;
     private String message;
 
-    public T getData() {
-        return data;
-    }
-
-    public void setData(T data) {
-        this.data = data;
-    }
-
-    private T data;
-
     public Boolean getStatus() {
         return status;
     }

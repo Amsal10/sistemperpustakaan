@@ -10,6 +10,8 @@ import com.kelompok2.sistemperpustakaan.repository.PustakawanRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 @RestController
@@ -22,7 +24,7 @@ public class PustakawanController {
     @PostMapping("/login")
     public DefaultResponse loginPustakawan(@RequestBody LoginDto loginDto){
 
-        Optional<Pustakawan> optionalPustakawan = pustakawanRepository.findByUsernamePustakawanAndPassworPustakawan(loginDto.getUname(), loginDto.getPass());
+        Optional<Pustakawan> optionalPustakawan = pustakawanRepository.findByUsernamePustakawanAndPasswordPustakawan(loginDto.getUname(), loginDto.getPass());
 
         DefaultResponse df = new DefaultResponse();
 
@@ -33,7 +35,6 @@ public class PustakawanController {
             df.setStatus(Boolean.FALSE);
             df.setMessage("Maaf username dan password salah");
         }
-
         return df;
     }
 
@@ -65,6 +66,28 @@ public class PustakawanController {
         pustakawan.setStatusPustakawan(dto.getStatusPustakawan());
 
         return pustakawan;
+    }
+
+    @GetMapping("/listpustakawan")
+    public List<PustakawanDto> getListPustakawan(){
+        List<PustakawanDto> list = new ArrayList();
+        for(Pustakawan pustakawan :pustakawanRepository.findAll()){
+            list.add(convertEntityToDto(pustakawan));
+        }
+        return list;
+    }
+    public PustakawanDto convertEntityToDto(Pustakawan entity){
+        PustakawanDto dto = new PustakawanDto();
+        dto.setIdPustakawan(entity.getIdPustakawan());
+        dto.setNamaPustakawan(entity.getNamaPustakawan());
+        dto.setJkPustakawan(entity.getJkPustakawan());
+        dto.setAlamatPustakawan(entity.getAlamatPustakawan());
+        dto.setNoHpPustakawan(entity.getNoHpPustakawan());
+        dto.setUsernamePustakawan(entity.getUsernamePustakawan());
+        dto.setPasswordPustakawan(entity.getPasswordPustakawan());
+        dto.setStatusPustakawan(entity.getStatusPustakawan());
+
+        return dto;
     }
 
 }

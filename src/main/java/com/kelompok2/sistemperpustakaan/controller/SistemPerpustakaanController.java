@@ -21,9 +21,6 @@ public class SistemPerpustakaanController {
     @Autowired
     private BukuRepository bukuRepository;
 
-
-
-
     @GetMapping("/byid/{idbuku}/namabuku/{namabuku}")
     public DefaultResponse getByIdBuku(@PathVariable String idbuku, @PathVariable String namabuku){
 
