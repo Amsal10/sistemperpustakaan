@@ -7,5 +7,5 @@ import java.util.Optional;
 
 public interface BukuRepository extends JpaRepository<Buku, String > {
 
-    Optional<Buku> findByIdbuku (String idbuku);
+    Optional<Buku> findByIdBuku (String idBuku);
 }

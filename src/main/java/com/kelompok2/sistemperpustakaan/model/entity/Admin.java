@@ -10,43 +10,43 @@ import javax.persistence.Table;
 public class Admin {
     @Id
     @Column(name = " id_admin")
-    private String idadmin;
+    private String idAdmin;
     @Column(name = "username")
-    private String username;
+    private String usernameAdmin;
     @Column(name = "password")
-    private String password;
+    private String passwordAdmin;
     @Column(name = "status_admin")
-    private String statusadmin;
+    private String statusAdmin;
 
-    public String getIdadmin() {
-        return idadmin;
+    public String getIdAdmin() {
+        return idAdmin;
     }
 
-    public void setIdadmin(String idadmin) {
-        this.idadmin = idadmin;
+    public void setIdAdmin(String idAdmin) {
+        this.idAdmin = idAdmin;
     }
 
-    public String getUsername() {
-        return username;
+    public String getUsernameAdmin() {
+        return usernameAdmin;
     }
 
-    public void setUsername(String username) {
-        this.username = username;
+    public void setUsernameAdmin(String usernameAdmin) {
+        this.usernameAdmin = usernameAdmin;
     }
 
-    public String getPassword() {
-        return password;
+    public String getPasswordAdmin() {
+        return passwordAdmin;
     }
 
-    public void setPassword(String password) {
-        this.password = password;
+    public void setPasswordAdmin(String passwordAdmin) {
+        this.passwordAdmin = passwordAdmin;
     }
 
-    public String getStatus_admin() {
-        return statusadmin;
+    public String getStatusAdmin() {
+        return statusAdmin;
     }
 
-    public void setStatus_admin(String status_admin) {
-        this.statusadmin = status_admin;
+    public void setStatusAdmin(String statusAdmin) {
+        this.statusAdmin = statusAdmin;
     }
 }

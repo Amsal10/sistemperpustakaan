@@ -20,12 +20,11 @@ public class BukuController {
     private BukuRepository bukuRepository;
 
 // menambahkan data buku ke data base --/buku/save
-//    contoh
     @PostMapping("/save")
     public DefaultResponse<BukuDto> savebuku(@RequestBody BukuDto bukuDto){
         Buku buku = convertDtoToEntity(bukuDto);
         DefaultResponse<BukuDto> response = new DefaultResponse();
-        Optional<Buku> optional = bukuRepository.findById(bukuDto.getIdbuku());
+        Optional<Buku> optional = bukuRepository.findById(bukuDto.getIdBuku());
         if(optional.isPresent()){
             response.setStatus(Boolean.FALSE);
             response.setMessage("Error, Data Sudah Tersedia");
@@ -39,13 +38,13 @@ public class BukuController {
     }
     public Buku convertDtoToEntity(BukuDto dto){
         Buku buku = new Buku();
-        buku.setIdbuku(dto.getIdbuku());
-        buku.setJudulbuku(dto.getJudulbuku());
-        buku.setPenulisbuku(dto.getPenulisbuku());
-        buku.setPenerbitbuku(dto.getPenerbitbuku());
-        buku.setTahunterbit(dto.getTahunterbit());
-        buku.setLokasirak(dto.getLokasirak());
-        buku.setJmlbuku(dto.getJmlbuku());
+        buku.setIdBuku(dto.getIdBuku());
+        buku.setJudulBuku(dto.getJudulBuku());
+        buku.setPenulisBuku(dto.getPenulisBuku());
+        buku.setPenerbitBuku(dto.getPenerbitBuku());
+        buku.setTahunTerbit(dto.getTahunTerbit());
+        buku.setLokasiRak(dto.getLokasiRak());
+        buku.setJmlBuku(dto.getJmlBuku());
 
         return buku;
     }
@@ -62,21 +61,21 @@ public class BukuController {
     }
     public BukuDto convertEntityToDto(Buku entity){
         BukuDto dto = new BukuDto();
-        dto.setIdbuku(entity.getIdbuku());
-        dto.setJudulbuku(entity.getJudulbuku());
-        dto.setPenulisbuku(entity.getPenulisbuku());
-        dto.setPenerbitbuku(entity.getPenerbitbuku());
-        dto.setTahunterbit(entity.getTahunterbit());
-        dto.setLokasirak(entity.getLokasirak());
-        dto.setJmlbuku(entity.getJmlbuku());
+        dto.setIdBuku(entity.getIdBuku());
+        dto.setJudulBuku(entity.getJudulBuku());
+        dto.setPenulisBuku(entity.getPenulisBuku());
+        dto.setPenerbitBuku(entity.getPenerbitBuku());
+        dto.setTahunTerbit(entity.getTahunTerbit());
+        dto.setLokasiRak(entity.getLokasiRak());
+        dto.setJmlBuku(entity.getJmlBuku());
 
         return dto;
     }
 // menampilkan buku berdasarkan id --/buku/getbyid/{idbuku}
     @GetMapping("/getbyid/{idbuku}")
-    public DefaultResponse<BukuDto> getByIdBuku(@PathVariable String idbuku){
+    public DefaultResponse<BukuDto> getByIdBuku(@PathVariable String idBuku){
         DefaultResponse<BukuDto> response = new DefaultResponse<>();
-        Optional<Buku> optional = bukuRepository.findByIdbuku(idbuku);
+        Optional<Buku> optional = bukuRepository.findByIdBuku(idBuku);
         if(optional.isPresent()){
             response.setStatus(Boolean.TRUE);
             response.setMessage("Data Ditemukan");
@@ -88,9 +87,9 @@ public class BukuController {
 
 // menghapus data buku dari database --/buku/delete/{idbuku}
     @DeleteMapping("/delete/{idbuku}")
-    public DefaultResponse deleteById(@PathVariable("idbuku") String idbuku) {
+    public DefaultResponse deleteById(@PathVariable("idBuku") String idBuku) {
         DefaultResponse df = new DefaultResponse();
-        Optional<Buku> optionalBuku =bukuRepository.findById(idbuku);
+        Optional<Buku> optionalBuku =bukuRepository.findById(idBuku);
         if (optionalBuku.isPresent()){
             bukuRepository.delete(optionalBuku.get());
             df.setStatus(Boolean.TRUE);
@@ -101,21 +100,21 @@ public class BukuController {
         }
         return df;
     }
-
-    @PutMapping("/update/{idbbuku}")
-    public DefaultResponse update(@PathVariable("idbuku") String idbuku, @RequestBody BukuDto bukuDto) {
+// meng-update data buku --/buku/update/{idbuku}
+    @PutMapping("/update/{idBuku}")
+    public DefaultResponse update(@PathVariable("idBuku") String idBuku, @RequestBody BukuDto bukuDto) {
         DefaultResponse df = new DefaultResponse();
-        Optional<Buku> optionalBuku = bukuRepository.findById(idbuku);
+        Optional<Buku> optionalBuku = bukuRepository.findById(idBuku);
         Buku book = optionalBuku.get();
         if (optionalBuku.isPresent()) {
-            book.setPenulisbuku(bukuDto.getPenulisbuku());
+            book.setPenulisBuku(bukuDto.getPenulisBuku());
             bukuRepository.save(book);
             df.setStatus(Boolean.TRUE);
 //            df.setData(bukuDto);
             df.setMessage("Data Berhasil Disimpan");
         } else {
             df.setStatus(Boolean.FALSE);
-            df.setMessage("Kode Icdx Sudah Terdaftar");
+            df.setMessage("Kode Sudah Terdaftar");
         }
         return df;
     }
