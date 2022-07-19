@@ -9,6 +9,7 @@ import java.util.Optional;
 public interface AnggotaRepository extends JpaRepository<Anggota, Long> {
 
     Optional<Anggota> findByIdAnggota(Integer idAnggota);
+//    List<Anggota> findAnggotaList(Integer idAnggota);
 
 
 

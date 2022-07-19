@@ -5,11 +5,10 @@ import com.kelompok2.sistemperpustakaan.model.dto.DefaultResponse;
 import com.kelompok2.sistemperpustakaan.model.entity.Anggota;
 import com.kelompok2.sistemperpustakaan.repository.AnggotaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 @RestController
@@ -19,6 +18,7 @@ public class AnggotaController {
     @Autowired
     AnggotaRepository anggotaRepositoryr;
 
+    // Input Data diri Anggota
     @PostMapping("/save")
     public DefaultResponse<AnggotaDto> savadataanggota(@RequestBody AnggotaDto anggotaDto){
         Anggota anggota = convertDtoToEntity(anggotaDto);
@@ -35,11 +35,25 @@ public class AnggotaController {
 
         return response;
     }
+    // menampilkan data mahasisiwa dalam database
+    @GetMapping("/listanggota")
+    public List<AnggotaDto> getListAnggota(){
+//        List<AnggotaDto> list = listData();
+        List<AnggotaDto> list = new ArrayList();
+        for(Anggota m :anggotaRepositoryr.findAll()){
+            list.add(convertEntityToDto(m));
+        }
+
+        return list;
+    }
+
+
 
     public Anggota convertDtoToEntity(AnggotaDto anggotaDto){
         Anggota anggota = new Anggota();
 
         anggota.setIdAnggota(anggotaDto.getIdAnggota());
+        anggota.setUserName(anggotaDto.getUserName());
         anggota.setNamaAnggota(anggotaDto.getNamaAnggota());
         anggota.setJkAnggota(anggotaDto.getJkAnggota());
         anggota.setPekerjaan(anggotaDto.getPekerjaan());
@@ -51,13 +65,18 @@ public class AnggotaController {
      return anggota;
     }
 
-    public Anggota convertEntityToDto(Anggota entity){
-        Anggota dto = new Anggota();
+    public AnggotaDto convertEntityToDto(Anggota entity){
+        AnggotaDto dto = new AnggotaDto();
 
         dto.setIdAnggota(entity.getIdAnggota());
-//        dto.setNamaAnggota(entity.getNamaAnggota());
-
-
+        dto.setUserName(entity.getUserName());
+        dto.setNamaAnggota(entity.getNamaAnggota());
+        dto.setJkAnggota(entity.getJkAnggota());
+        dto.setPekerjaan(entity.getPekerjaan());
+        dto.setAlamatAnggota(entity.getAlamatAnggota());
+        dto.setNoHpAnggota(entity.getNoHpAnggota());
+        dto.setPasswordAnggota(entity.getPasswordAnggota());
+        dto.setStatusAnggota(entity.getStatusAnggota());
 
         return dto;
     }

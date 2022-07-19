@@ -10,7 +10,7 @@ import javax.persistence.Table;
 
 public class Anggota {
     @Id
-    @Column(name = "id_Anggota")
+    @Column(name = "id_Anggota", length  = 5)
     private Integer idAnggota;
     @Column(name = "user_Name")
     private String userName;
@@ -46,7 +46,7 @@ public class Anggota {
         this.userName = userName;
     }
 
-    public String getNamaAnggota(Integer idAnggota) {
+    public String getNamaAnggota() {
         return namaAnggota;
     }
 
@@ -54,7 +54,7 @@ public class Anggota {
         this.namaAnggota = namaAnggota;
     }
 
-    public String getJkAnggota(String jkAnggota) {
+    public String getJkAnggota() {
         return this.jkAnggota;
     }
 
@@ -62,7 +62,7 @@ public class Anggota {
         this.jkAnggota = jkAnggota;
     }
 
-    public String getPekerjaan(String pekerjaan) {
+    public String getPekerjaan() {
         return this.pekerjaan;
     }
 
@@ -70,7 +70,7 @@ public class Anggota {
         this.pekerjaan = pekerjaan;
     }
 
-    public String getAlamatAnggota(String alamatAnggota) {
+    public String getAlamatAnggota() {
         return this.alamatAnggota;
     }
 
@@ -86,7 +86,7 @@ public class Anggota {
         this.noHpAnggota = noHpAnggota;
     }
 
-    public String getPasswordAnggota(String passwordAnggota) {
+    public String getPasswordAnggota() {
         return this.passwordAnggota;
     }
 

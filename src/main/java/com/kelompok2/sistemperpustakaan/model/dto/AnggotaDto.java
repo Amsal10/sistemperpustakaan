@@ -15,7 +15,6 @@ public class AnggotaDto {
     private String passwordAnggota;
     private String statusAnggota;
 
-
     public Integer getIdAnggota() {
         return idAnggota;
     }
