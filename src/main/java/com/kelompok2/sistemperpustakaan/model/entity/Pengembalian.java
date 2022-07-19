@@ -11,73 +11,73 @@ import java.util.Date;
 public class Pengembalian {
     @Id
     @Column (name = "id_pengembalian")
-    private Integer idpengembalian;
+    private Integer idPengembalian;
     @Column (name = "tgl_kembali")
-    private Date tglkembali;
+    private Date tglKembali;
     @Column (name = "jatuh_tempo")
-    private Date jatuhtempo;
+    private Date jatuhTempo;
     @Column (name = "total_denda")
-    private Integer totaldenda;
+    private Integer totalDenda;
     @Column (name = "id_pustakawan")
-    private Integer idpustakawan;
+    private Integer idPustakawan;
     @Column (name = "id_anggota")
-    private Integer idanggota;
+    private Integer idAnggota;
     @Column (name = "id_buku")
-    private String idbuku;
+    private String idBuku;
 
-    public Integer getIdpengembalian() {
-        return idpengembalian;
+    public Integer getIdPengembalian() {
+        return idPengembalian;
     }
 
-    public void setIdpengembalian(Integer idpengembalian) {
-        this.idpengembalian = idpengembalian;
+    public void setIdPengembalian(Integer idPengembalian) {
+        this.idPengembalian = idPengembalian;
     }
 
-    public Date getTglkembali() {
-        return tglkembali;
+    public Date getTglKembali() {
+        return tglKembali;
     }
 
-    public void setTglkembali(Date tglkembali) {
-        this.tglkembali = tglkembali;
+    public void setTglKembali(Date tglKembali) {
+        this.tglKembali = tglKembali;
     }
 
-    public Date getJatuhtempo() {
-        return jatuhtempo;
+    public Date getJatuhTempo() {
+        return jatuhTempo;
     }
 
-    public void setJatuhtempo(Date jatuhtempo) {
-        this.jatuhtempo = jatuhtempo;
+    public void setJatuhTempo(Date jatuhTempo) {
+        this.jatuhTempo = jatuhTempo;
     }
 
-    public Integer getTotaldenda() {
-        return totaldenda;
+    public Integer getTotalDenda() {
+        return totalDenda;
     }
 
-    public void setTotaldenda(Integer totaldenda) {
-        this.totaldenda = totaldenda;
+    public void setTotalDenda(Integer totalDenda) {
+        this.totalDenda = totalDenda;
     }
 
-    public Integer getIdpustakawan() {
-        return idpustakawan;
+    public Integer getIdPustakawan() {
+        return idPustakawan;
     }
 
-    public void setIdpustakawan(Integer idpustakawan) {
-        this.idpustakawan = idpustakawan;
+    public void setIdPustakawan(Integer idPustakawan) {
+        this.idPustakawan = idPustakawan;
     }
 
-    public Integer getIdanggota() {
-        return idanggota;
+    public Integer getIdAnggota() {
+        return idAnggota;
     }
 
-    public void setIdanggota(Integer idanggota) {
-        this.idanggota = idanggota;
+    public void setIdAnggota(Integer idAnggota) {
+        this.idAnggota = idAnggota;
     }
 
-    public String getIdbuku() {
-        return idbuku;
+    public String getIdBuku() {
+        return idBuku;
     }
 
-    public void setIdbuku(String idbuku) {
-        this.idbuku = idbuku;
+    public void setIdBuku(String idBuku) {
+        this.idBuku = idBuku;
     }
 }

@@ -3,67 +3,67 @@ package com.kelompok2.sistemperpustakaan.model.dto;
 import java.sql.Date;
 
 public class PengembalianDto {
-    private Integer idpengembalian;
-    private Date tglkembali;
-    private Date jatuhtempo;
-    private Integer totaldenda;
-    private Integer idpustakawan;
-    private Integer idanggota;
-    private String idbuku;
+    private Integer idPengembalian;
+    private Date tglKembali;
+    private Date jatuhTempo;
+    private Integer totalDenda;
+    private Integer idPustakawan;
+    private Integer idAnggota;
+    private String idBuku;
 
-    public Integer getIdpengembalian() {
-        return idpengembalian;
+    public Integer getIdPengembalian() {
+        return idPengembalian;
     }
 
-    public void setIdpengembalian(Integer idpengembalian) {
-        this.idpengembalian = idpengembalian;
+    public void setIdPengembalian(Integer idPengembalian) {
+        this.idPengembalian = idPengembalian;
     }
 
-    public Date getTglkembali() {
-        return tglkembali;
+    public Date getTglKembali() {
+        return tglKembali;
     }
 
-    public void setTglkembali(Date tglkembali) {
-        this.tglkembali = tglkembali;
+    public void setTglKembali(Date tglKembali) {
+        this.tglKembali = tglKembali;
     }
 
-    public Date getJatuhtempo() {
-        return jatuhtempo;
+    public Date getJatuhTempo() {
+        return jatuhTempo;
     }
 
-    public void setJatuhtempo(Date jatuhtempo) {
-        this.jatuhtempo = jatuhtempo;
+    public void setJatuhTempo(Date jatuhTempo) {
+        this.jatuhTempo = jatuhTempo;
     }
 
-    public Integer getTotaldenda() {
-        return totaldenda;
+    public Integer getTotalDenda() {
+        return totalDenda;
     }
 
-    public void setTotaldenda(Integer totaldenda) {
-        this.totaldenda = totaldenda;
+    public void setTotalDenda(Integer totalDenda) {
+        this.totalDenda = totalDenda;
     }
 
-    public Integer getIdpustakawan() {
-        return idpustakawan;
+    public Integer getIdPustakawan() {
+        return idPustakawan;
     }
 
-    public void setIdpustakawan(Integer idpustakawan) {
-        this.idpustakawan = idpustakawan;
+    public void setIdPustakawan(Integer idPustakawan) {
+        this.idPustakawan = idPustakawan;
     }
 
-    public Integer getIdanggota() {
-        return idanggota;
+    public Integer getIdAnggota() {
+        return idAnggota;
     }
 
-    public void setIdanggota(Integer idanggota) {
-        this.idanggota = idanggota;
+    public void setIdAnggota(Integer idAnggota) {
+        this.idAnggota = idAnggota;
     }
 
-    public String getIdbuku() {
-        return idbuku;
+    public String getIdBuku() {
+        return idBuku;
     }
 
-    public void setIdbuku(String idbuku) {
-        this.idbuku = idbuku;
+    public void setIdBuku(String idBuku) {
+        this.idBuku = idBuku;
     }
 }

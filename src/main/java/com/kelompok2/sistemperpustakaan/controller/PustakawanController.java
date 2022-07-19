@@ -68,7 +68,7 @@ public class PustakawanController {
         return pustakawan;
     }
 
-    @GetMapping("/listpustakawan")
+    @GetMapping("/list")
     public List<PustakawanDto> getListPustakawan(){
         List<PustakawanDto> list = new ArrayList();
         for(Pustakawan pustakawan :pustakawanRepository.findAll()){
