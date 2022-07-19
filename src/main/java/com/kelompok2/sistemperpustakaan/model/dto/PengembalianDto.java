@@ -1,28 +1,14 @@
-package com.kelompok2.sistemperpustakaan.model.entity;
+package com.kelompok2.sistemperpustakaan.model.dto;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
-import java.util.Date;
+import java.sql.Date;
 
-@Entity
-@Table (name = "data_pengembalian")
-public class Pengembalian {
-    @Id
-    @Column (name = "id_pengembalian")
+public class PengembalianDto {
     private Integer idpengembalian;
-    @Column (name = "tgl_kembali")
     private Date tglkembali;
-    @Column (name = "jatuh_tempo")
     private Date jatuhtempo;
-    @Column (name = "total_denda")
     private Integer totaldenda;
-    @Column (name = "id_pustakawan")
     private Integer idpustakawan;
-    @Column (name = "id_anggota")
     private Integer idanggota;
-    @Column (name = "id_buku")
     private String idbuku;
 
     public Integer getIdpengembalian() {
