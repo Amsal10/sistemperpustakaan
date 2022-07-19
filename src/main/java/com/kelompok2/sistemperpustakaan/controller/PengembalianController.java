@@ -3,6 +3,7 @@ package com.kelompok2.sistemperpustakaan.controller;
 import com.kelompok2.sistemperpustakaan.model.dto.DefaultResponse;
 import com.kelompok2.sistemperpustakaan.model.dto.PengembalianDto;
 import com.kelompok2.sistemperpustakaan.model.dto.PustakawanDto;
+import com.kelompok2.sistemperpustakaan.model.entity.Buku;
 import com.kelompok2.sistemperpustakaan.model.entity.Pengembalian;
 import com.kelompok2.sistemperpustakaan.model.entity.Pustakawan;
 import com.kelompok2.sistemperpustakaan.repository.PengembalianRepository;
@@ -68,4 +69,19 @@ public class PengembalianController {
 //        dto.setIdBuku(entity.getIdBuku());
 //        return dto;
 //    }
+
+    @DeleteMapping("/delete/{idPengembalian}")
+    public DefaultResponse deleteById(@PathVariable("idPengembalian") Integer idPengembalian) {
+        DefaultResponse df = new DefaultResponse();
+        Optional<Pengembalian> optionalPengembalian =pengembalianRepository.findById(idPengembalian);
+        if (optionalPengembalian.isPresent()){
+            pengembalianRepository.delete(optionalPengembalian.get());
+            df.setStatus(Boolean.TRUE);
+            df.setMessage("Data Berhasil Dihapus");
+        } else {
+            df.setStatus(Boolean.FALSE);
+            df.setMessage("Data Tidak Ditemukan");
+        }
+        return df;
+    }
 }

@@ -90,4 +90,19 @@ public class PustakawanController {
         return dto;
     }
 
+    @DeleteMapping("/delete/{idPustakawan}")
+    public DefaultResponse deleteById(@PathVariable("idPustakawan") Integer idPustakawan) {
+        DefaultResponse df = new DefaultResponse();
+        Optional<Pustakawan> optionalPustakawan =pustakawanRepository.findById(idPustakawan);
+        if (optionalPustakawan.isPresent()){
+            pustakawanRepository.delete(optionalPustakawan.get());
+            df.setStatus(Boolean.TRUE);
+            df.setMessage("Data Berhasil Dihapus");
+        } else {
+            df.setStatus(Boolean.FALSE);
+            df.setMessage("Data Tidak Ditemukan");
+        }
+        return df;
+    }
+
 }
