@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("/pustakawan")
+@RequestMapping("/pustakawan1")
 public class SistemPerpustakaanController {
 
     @Autowired
@@ -20,8 +20,6 @@ public class SistemPerpustakaanController {
 
     @Autowired
     private BukuRepository bukuRepository;
-    //komentar
-//    nambah komentar
 
 
     @PostMapping("/login")
