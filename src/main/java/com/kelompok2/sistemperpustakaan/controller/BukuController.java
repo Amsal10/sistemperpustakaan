@@ -16,7 +16,8 @@ import java.util.Optional;
 @RequestMapping("/buku")
 public class BukuController {
 
-
+    @Autowired
+    private BukuRepository bukuRepository;
 
 // menambahkan data buku ke data base --/buku/save
     @PostMapping("/save")
