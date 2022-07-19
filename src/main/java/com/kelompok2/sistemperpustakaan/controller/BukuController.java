@@ -5,11 +5,11 @@ import com.kelompok2.sistemperpustakaan.model.dto.DefaultResponse;
 import com.kelompok2.sistemperpustakaan.model.entity.Buku;
 import com.kelompok2.sistemperpustakaan.repository.BukuRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 @RestController
@@ -49,8 +49,19 @@ public class BukuController {
         return buku;
     }
 
-    public Buku convertEntityToDto(Buku entity){
-        Buku dto = new Buku();
+// menampilkan seluruh data buku --buku/listbuku
+    @GetMapping("/listbuku")
+    public List<BukuDto> getListBuku(){
+//        List<BukuDto> list = listData();
+        List<BukuDto> list = new ArrayList();
+        for(Buku buku :bukuRepository.findAll()){
+            list.add(convertEntityToDto(buku));
+        }
+
+        return list;
+    }
+    public BukuDto convertEntityToDto(Buku entity){
+        BukuDto dto = new BukuDto();
         dto.setIdbuku(entity.getIdbuku());
         dto.setJudulbuku(entity.getJudulbuku());
         dto.setPenulisbuku(entity.getPenulisbuku());
@@ -61,7 +72,34 @@ public class BukuController {
 
         return dto;
     }
+// menampilkan buku berdasarkan id --/buku/getbyid/{idbuku}
+    @GetMapping("/getbyid/{idbuku}")
+    public DefaultResponse<BukuDto> getByIdBuku(@PathVariable String idbuku){
+        DefaultResponse<BukuDto> response = new DefaultResponse<>();
+        Optional<Buku> optional = bukuRepository.findByIdbuku(idbuku);
+        if(optional.isPresent()){
+            response.setStatus(Boolean.TRUE);
+            response.setMessage("Data Ditemukan");
+        } else {
+            response.setMessage("Data Tidak Ditemukan");
+        }
+        return response;
+    }
 
-
+// menghapus data buku dari database --/buku/delete/{idbuku}
+    @DeleteMapping("/delete/{idbuku}")
+    public DefaultResponse deleteById(@PathVariable("idbuku") String idbuku) {
+        DefaultResponse df = new DefaultResponse();
+        Optional<Buku> optionalBuku =bukuRepository.findById(idbuku);
+        if (optionalBuku.isPresent()){
+            bukuRepository.delete(optionalBuku.get());
+            df.setStatus(Boolean.TRUE);
+            df.setMessage("Data Berhasil Dihapus");
+        } else {
+            df.setStatus(Boolean.FALSE);
+            df.setMessage("Data Tidak Ditemukan");
+        }
+        return df;
+    }
 
 }
