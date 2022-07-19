@@ -30,7 +30,7 @@ public class AnggotaController {
         } else {
             anggotaRepositoryr.save(anggota);
             response.setStatus(Boolean.TRUE);
-            response.setMessage("Berhasil Simpan Data");
+            response.setMessage("Data Anggota Berhasil disimpan");
         }
 
         return response;
@@ -40,12 +40,12 @@ public class AnggotaController {
         Anggota anggota = new Anggota();
 
         anggota.setIdAnggota(anggotaDto.getIdAnggota());
-        anggota.getNamaAnggota(anggotaDto.getIdAnggota());
-        anggota.getJkAnggota(anggotaDto.getJkAnggota());
-        anggota.getPekerjaan(anggotaDto.getPekerjaan());
-        anggota.getAlamatAnggota(anggotaDto.getAlamatAnggota());
+        anggota.setNamaAnggota(anggotaDto.getNamaAnggota());
+        anggota.setJkAnggota(anggotaDto.getJkAnggota());
+        anggota.setPekerjaan(anggotaDto.getPekerjaan());
+        anggota.setAlamatAnggota(anggotaDto.getAlamatAnggota());
         anggota.setNoHpAnggota(anggotaDto.getNoHpAnggota());
-        anggota.getPasswordAnggota(anggotaDto.getPasswordAnggota());
+        anggota.setPasswordAnggota(anggotaDto.getPasswordAnggota());
         anggota.setStatusAnggota(anggotaDto.getStatusAnggota());
 
      return anggota;
