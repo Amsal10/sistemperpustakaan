@@ -19,8 +19,9 @@ public class BukuController {
 
 
 // menambahkan data buku ke data base --/buku/save
+//    contoh
     @PostMapping("/save")
-    public DefaultResponse<BukuDto> savemahasiswa(@RequestBody BukuDto bukuDto){
+    public DefaultResponse<BukuDto> savebuku(@RequestBody BukuDto bukuDto){
         Buku buku = convertDtoToEntity(bukuDto);
         DefaultResponse<BukuDto> response = new DefaultResponse();
         Optional<Buku> optional = bukuRepository.findById(bukuDto.getIdbuku());
@@ -96,6 +97,24 @@ public class BukuController {
         } else {
             df.setStatus(Boolean.FALSE);
             df.setMessage("Data Tidak Ditemukan");
+        }
+        return df;
+    }
+
+    @PutMapping("/update/{idbbuku}")
+    public DefaultResponse update(@PathVariable("idbuku") String idbuku, @RequestBody BukuDto bukuDto) {
+        DefaultResponse df = new DefaultResponse();
+        Optional<Buku> optionalBuku = bukuRepository.findById(idbuku);
+        Buku book = optionalBuku.get();
+        if (optionalBuku.isPresent()) {
+            book.setPenulisbuku(bukuDto.getPenulisbuku());
+            bukuRepository.save(book);
+            df.setStatus(Boolean.TRUE);
+//            df.setData(bukuDto);
+            df.setMessage("Data Berhasil Disimpan");
+        } else {
+            df.setStatus(Boolean.FALSE);
+            df.setMessage("Kode Icdx Sudah Terdaftar");
         }
         return df;
     }
