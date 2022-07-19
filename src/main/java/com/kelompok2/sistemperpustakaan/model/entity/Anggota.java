@@ -1,9 +1,6 @@
 package com.kelompok2.sistemperpustakaan.model.entity;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
 @Table(name="data_anggota")
@@ -11,95 +8,107 @@ import javax.persistence.Table;
 public class Anggota {
     @Id
     @Column(name = "id_Anggota", length  = 5)
-    private Integer idAnggota;
+    private Integer idanggota;
     @Column(name = "user_Name")
-    private String userName;
+    private String username;
     @Column(name = "nama_Anggota")
-    private String namaAnggota;
+    private String namaanggota;
     @Column(name = "jk_Anggota")
-    private String jkAnggota;
+    private String jkanggota;
     @Column(name = "pekerjaan")
     private String pekerjaan;
     @Column(name = "alamat_Anggota")
-    private String alamatAnggota;
+    private String alamatanggota;
     @Column(name = "no_Hp_Anggota")
-    private Integer noHpAnggota;
+    private Integer nohpanggota;
     @Column(name = "password_Anggota")
-    private String passwordAnggota;
+    private String passwordanggota;
     @Column(name = "status_Anggota")
-    private String statusAnggota;
+    private String statusanggota;
+
+    @OneToOne
+    @JoinColumn(name = "detailid", insertable = false, updatable = false)
+    private Peminjaman peminjaman;
 
 
-    public Integer getIdAnggota() {
-        return idAnggota;
+    public Integer getIdanggota() {
+        return idanggota;
     }
 
-    public void setIdAnggota(Integer idAnggota) {
-        this.idAnggota = idAnggota;
+    public void setIdanggota(Integer idanggota) {
+        this.idanggota = idanggota;
     }
 
-    public String getUserName() {
-        return userName;
+    public String getUsername() {
+        return username;
     }
 
-    public void setUserName(String userName) {
-        this.userName = userName;
+    public void setUsername(String username) {
+        this.username = username;
     }
 
-    public String getNamaAnggota() {
-        return namaAnggota;
+    public String getNamaanggota() {
+        return namaanggota;
     }
 
-    public void setNamaAnggota(String namaAnggota) {
-        this.namaAnggota = namaAnggota;
+    public void setNamaanggota(String namaanggota) {
+        this.namaanggota = namaanggota;
     }
 
-    public String getJkAnggota() {
-        return this.jkAnggota;
+    public String getJkanggota() {
+        return jkanggota;
     }
 
-    public void setJkAnggota(String jkAnggota) {
-        this.jkAnggota = jkAnggota;
+    public void setJkanggota(String jkanggota) {
+        this.jkanggota = jkanggota;
     }
 
     public String getPekerjaan() {
-        return this.pekerjaan;
+        return pekerjaan;
     }
 
     public void setPekerjaan(String pekerjaan) {
         this.pekerjaan = pekerjaan;
     }
 
-    public String getAlamatAnggota() {
-        return this.alamatAnggota;
+    public String getAlamatanggota() {
+        return alamatanggota;
     }
 
-    public void setAlamatAnggota(String alamatAnggota) {
-        this.alamatAnggota = alamatAnggota;
+    public void setAlamatanggota(String alamatanggota) {
+        this.alamatanggota = alamatanggota;
     }
 
-    public Integer getNoHpAnggota() {
-        return noHpAnggota;
+    public Integer getNohpanggota() {
+        return nohpanggota;
     }
 
-    public void setNoHpAnggota(Integer noHpAnggota) {
-        this.noHpAnggota = noHpAnggota;
+    public void setNohpanggota(Integer nohpanggota) {
+        this.nohpanggota = nohpanggota;
     }
 
-    public String getPasswordAnggota() {
-        return this.passwordAnggota;
+    public String getPasswordanggota() {
+        return passwordanggota;
     }
 
-    public void setPasswordAnggota(String passwordAnggota) {
-        this.passwordAnggota = passwordAnggota;
+    public void setPasswordanggota(String passwordanggota) {
+        this.passwordanggota = passwordanggota;
     }
 
-    public String getStatusAnggota() {
-        return statusAnggota;
+    public String getStatusanggota() {
+        return statusanggota;
     }
 
-    public void setStatusAnggota(String statusAnggota) {
-        this.statusAnggota = statusAnggota;
+    public void setStatusanggota(String statusanggota) {
+        this.statusanggota = statusanggota;
+    }
+
+    public Peminjaman getPeminjaman() {
+        return peminjaman;
+    }
+
+    public void setPeminjaman(Peminjaman peminjaman) {
+        this.peminjaman = peminjaman;
     }
 }
 
