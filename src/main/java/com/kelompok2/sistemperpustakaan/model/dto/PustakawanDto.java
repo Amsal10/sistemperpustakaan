@@ -3,76 +3,76 @@ package com.kelompok2.sistemperpustakaan.model.dto;
 import javax.persistence.Column;
 
 public class PustakawanDto {
-    private Integer idpustakawan;
-    private String namapustakawan;
-    private String jkpustakawan;
-    private String alamatpustakawan;
-    private String nohppustakawan;
-    private String usernamepustakawan;
-    private String passwordpustakawan;
-    private String statuspustakawan;
+    private Integer idPustakawan;
+    private String namaPustakawan;
+    private String jkPustakawan;
+    private String alamatPustakawan;
+    private String noHpPustakawan;
+    private String usernamePustakawan;
+    private String passwordPustakawan;
+    private String statusPustakawan;
 
-    public Integer getIdpustakawan() {
-        return idpustakawan;
+    public Integer getIdPustakawan() {
+        return idPustakawan;
     }
 
-    public void setIdpustakawan(Integer idpustakawan) {
-        this.idpustakawan = idpustakawan;
+    public void setIdPustakawan(Integer idPustakawan) {
+        this.idPustakawan = idPustakawan;
     }
 
-    public String getNamapustakawan() {
-        return namapustakawan;
+    public String getNamaPustakawan() {
+        return namaPustakawan;
     }
 
-    public void setNamapustakawan(String namapustakawan) {
-        this.namapustakawan = namapustakawan;
+    public void setNamaPustakawan(String namaPustakawan) {
+        this.namaPustakawan = namaPustakawan;
     }
 
-    public String getJkpustakawan() {
-        return jkpustakawan;
+    public String getJkPustakawan() {
+        return jkPustakawan;
     }
 
-    public void setJkpustakawan(String jkpustakawan) {
-        this.jkpustakawan = jkpustakawan;
+    public void setJkPustakawan(String jkPustakawan) {
+        this.jkPustakawan = jkPustakawan;
     }
 
-    public String getAlamatpustakawan() {
-        return alamatpustakawan;
+    public String getAlamatPustakawan() {
+        return alamatPustakawan;
     }
 
-    public void setAlamatpustakawan(String alamatpustakawan) {
-        this.alamatpustakawan = alamatpustakawan;
+    public void setAlamatPustakawan(String alamatPustakawan) {
+        this.alamatPustakawan = alamatPustakawan;
     }
 
-    public String getNohppustakawan() {
-        return nohppustakawan;
+    public String getNoHpPustakawan() {
+        return noHpPustakawan;
     }
 
-    public void setNohppustakawan(String nohppustakawan) {
-        this.nohppustakawan = nohppustakawan;
+    public void setNoHpPustakawan(String noHpPustakawan) {
+        this.noHpPustakawan = noHpPustakawan;
     }
 
-    public String getUsernamepustakawan() {
-        return usernamepustakawan;
+    public String getUsernamePustakawan() {
+        return usernamePustakawan;
     }
 
-    public void setUsernamepustakawan(String usernamepustakawan) {
-        this.usernamepustakawan = usernamepustakawan;
+    public void setUsernamePustakawan(String usernamePustakawan) {
+        this.usernamePustakawan = usernamePustakawan;
     }
 
-    public String getPasswordpustakawan() {
-        return passwordpustakawan;
+    public String getPasswordPustakawan() {
+        return passwordPustakawan;
     }
 
-    public void setPasswordpustakawan(String passwordpustakawan) {
-        this.passwordpustakawan = passwordpustakawan;
+    public void setPasswordPustakawan(String passwordPustakawan) {
+        this.passwordPustakawan = passwordPustakawan;
     }
 
-    public String getStatuspustakawan() {
-        return statuspustakawan;
+    public String getStatusPustakawan() {
+        return statusPustakawan;
     }
 
-    public void setStatuspustakawan(String statuspustakawan) {
-        this.statuspustakawan = statuspustakawan;
+    public void setStatusPustakawan(String statusPustakawan) {
+        this.statusPustakawan = statusPustakawan;
     }
 }

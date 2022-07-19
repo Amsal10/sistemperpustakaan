@@ -22,23 +22,7 @@ public class SistemPerpustakaanController {
     private BukuRepository bukuRepository;
 
 
-    @PostMapping("/login")
-    public DefaultResponse loginPustakawan(@RequestBody LoginDto loginDto){
 
-        Optional<Pustakawan> optionalPustakawan = pustakawanRepository.findByUsernamepustakawanAndPasswordpustakawan(loginDto.getUname(), loginDto.getPass());
-
-        DefaultResponse df = new DefaultResponse();
-
-        if(optionalPustakawan.isPresent()){
-            df.setStatus(Boolean.TRUE);
-            df.setMessage("Login berhasil");
-        } else {
-            df.setStatus(Boolean.FALSE);
-            df.setMessage("Maaf username dan password salah");
-        }
-
-        return df;
-    }
 
     @GetMapping("/byid/{idbuku}/namabuku/{namabuku}")
     public DefaultResponse getByIdBuku(@PathVariable String idbuku, @PathVariable String namabuku){

@@ -2,6 +2,7 @@ package com.kelompok2.sistemperpustakaan.controller;
 
 import com.kelompok2.sistemperpustakaan.model.dto.BukuDto;
 import com.kelompok2.sistemperpustakaan.model.dto.DefaultResponse;
+import com.kelompok2.sistemperpustakaan.model.dto.LoginDto;
 import com.kelompok2.sistemperpustakaan.model.dto.PustakawanDto;
 import com.kelompok2.sistemperpustakaan.model.entity.Buku;
 import com.kelompok2.sistemperpustakaan.model.entity.Pustakawan;
@@ -18,11 +19,29 @@ public class PustakawanController {
     @Autowired
     private PustakawanRepository pustakawanRepository;
 
+    @PostMapping("/login")
+    public DefaultResponse loginPustakawan(@RequestBody LoginDto loginDto){
+
+        Optional<Pustakawan> optionalPustakawan = pustakawanRepository.findByUsernamePustakawanAndPassworPustakawan(loginDto.getUname(), loginDto.getPass());
+
+        DefaultResponse df = new DefaultResponse();
+
+        if(optionalPustakawan.isPresent()){
+            df.setStatus(Boolean.TRUE);
+            df.setMessage("Login berhasil");
+        } else {
+            df.setStatus(Boolean.FALSE);
+            df.setMessage("Maaf username dan password salah");
+        }
+
+        return df;
+    }
+
     @PostMapping("/save")
     public DefaultResponse<PustakawanDto> savePustakawan(@RequestBody PustakawanDto pustakawanDto){
         Pustakawan pustakawan = convertDtoToEntity(pustakawanDto);
         DefaultResponse<PustakawanDto> response = new DefaultResponse();
-        Optional<Pustakawan> optionalPustakawan = pustakawanRepository.findById(pustakawanDto.getIdpustakawan());
+        Optional<Pustakawan> optionalPustakawan = pustakawanRepository.findById(pustakawanDto.getIdPustakawan());
         if(optionalPustakawan.isPresent()){
             response.setStatus(Boolean.FALSE);
             response.setMessage("Error, data sudah tersedia");
@@ -36,14 +55,14 @@ public class PustakawanController {
 
     public Pustakawan convertDtoToEntity(PustakawanDto dto){
         Pustakawan pustakawan = new Pustakawan();
-        pustakawan.setIdpustakawan(dto.getIdpustakawan());
-        pustakawan.setNamapustakawan(dto.getNamapustakawan());
-        pustakawan.setJkpustakawan(dto.getJkpustakawan());
-        pustakawan.setAlamatpustakawan(dto.getAlamatpustakawan());
-        pustakawan.setNohppustakawan(dto.getNohppustakawan());
-        pustakawan.setUsernamepustakawan(dto.getUsernamepustakawan());
-        pustakawan.setPasswordpustakawan(dto.getPasswordpustakawan());
-        pustakawan.setStatuspustakawan(dto.getStatuspustakawan());
+        pustakawan.setIdPustakawan(dto.getIdPustakawan());
+        pustakawan.setNamaPustakawan(dto.getNamaPustakawan());
+        pustakawan.setJkPustakawan(dto.getJkPustakawan());
+        pustakawan.setAlamatPustakawan(dto.getAlamatPustakawan());
+        pustakawan.setNoHpPustakawan(dto.getNoHpPustakawan());
+        pustakawan.setUsernamePustakawan(dto.getUsernamePustakawan());
+        pustakawan.setPasswordPustakawan(dto.getPasswordPustakawan());
+        pustakawan.setStatusPustakawan(dto.getStatusPustakawan());
 
         return pustakawan;
     }

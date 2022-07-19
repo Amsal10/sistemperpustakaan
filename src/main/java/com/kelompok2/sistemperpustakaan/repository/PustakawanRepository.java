@@ -7,5 +7,5 @@ import java.util.Optional;
 
 public interface PustakawanRepository extends JpaRepository<Pustakawan, Integer > {
 
-    Optional<Pustakawan> findByUsernamepustakawanAndPasswordpustakawan (String uname, String pass);
+    Optional<Pustakawan> findByUsernamePustakawanAndPassworPustakawan (String uname, String pass);
 }
