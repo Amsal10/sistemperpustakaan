@@ -1,50 +1,47 @@
 package com.kelompok2.sistemperpustakaan.model.dto;
 
-import javax.persistence.Column;
-import javax.persistence.Id;
-
 public class AnggotaDto {
 
-    private Integer idAnggota;
-    private String userName;
-    private String namaAnggota;
-    private String jkAnggota;
+    private Integer idanggota;
+    private String username;
+    private String namaanggota;
+    private String jkanggota;
     private String pekerjaan;
-    private String alamatAnggota;
-    private Integer noHpAnggota;
-    private String passwordAnggota;
-    private String statusAnggota;
+    private String alamatanggota;
+    private Integer nohpanggota;
+    private String passwordanggota;
+    private String statusanggota;
 
-    public Integer getIdAnggota() {
-        return idAnggota;
+    public Integer getIdanggota() {
+        return idanggota;
     }
 
-    public void setIdAnggota(Integer idAnggota) {
-        this.idAnggota = idAnggota;
+    public void setIdanggota(Integer idanggota) {
+        this.idanggota = idanggota;
     }
 
-    public String getUserName() {
-        return userName;
+    public String getUsername() {
+        return username;
     }
 
-    public void setUserName(String userName) {
-        this.userName = userName;
+    public void setUsername(String username) {
+        this.username = username;
     }
 
-    public String getNamaAnggota() {
-        return namaAnggota;
+    public String getNamaanggota() {
+        return namaanggota;
     }
 
-    public void setNamaAnggota(String namaAnggota) {
-        this.namaAnggota = namaAnggota;
+    public void setNamaanggota(String namaanggota) {
+        this.namaanggota = namaanggota;
     }
 
-    public String getJkAnggota() {
-        return jkAnggota;
+    public String getJkanggota() {
+        return jkanggota;
     }
 
-    public void setJkAnggota(String jkAnggota) {
-        this.jkAnggota = jkAnggota;
+    public void setJkanggota(String jkanggota) {
+        this.jkanggota = jkanggota;
     }
 
     public String getPekerjaan() {
@@ -55,35 +52,35 @@ public class AnggotaDto {
         this.pekerjaan = pekerjaan;
     }
 
-    public String getAlamatAnggota() {
-        return alamatAnggota;
+    public String getAlamatanggota() {
+        return alamatanggota;
     }
 
-    public void setAlamatAnggota(String alamatAnggota) {
-        this.alamatAnggota = alamatAnggota;
+    public void setAlamatanggota(String alamatanggota) {
+        this.alamatanggota = alamatanggota;
     }
 
-    public Integer getNoHpAnggota() {
-        return noHpAnggota;
+    public Integer getNohpanggota() {
+        return nohpanggota;
     }
 
-    public void setNoHpAnggota(Integer noHpAnggota) {
-        this.noHpAnggota = noHpAnggota;
+    public void setNohpanggota(Integer nohpanggota) {
+        this.nohpanggota = nohpanggota;
     }
 
-    public String getPasswordAnggota() {
-        return passwordAnggota;
+    public String getPasswordanggota() {
+        return passwordanggota;
     }
 
-    public void setPasswordAnggota(String passwordAnggota) {
-        this.passwordAnggota = passwordAnggota;
+    public void setPasswordanggota(String passwordanggota) {
+        this.passwordanggota = passwordanggota;
     }
 
-    public String getStatusAnggota() {
-        return statusAnggota;
+    public String getStatusanggota() {
+        return statusanggota;
     }
 
-    public void setStatusAnggota(String statusAnggota) {
-        this.statusAnggota = statusAnggota;
+    public void setStatusanggota(String statusanggota) {
+        this.statusanggota = statusanggota;
     }
 }
