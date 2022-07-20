@@ -68,6 +68,8 @@ public class PustakawanController {
         return pustakawan;
     }
 
+
+
     @GetMapping("/list")
     public List<PustakawanDto> getListPustakawan(){
         List<PustakawanDto> list = new ArrayList();
@@ -90,6 +92,8 @@ public class PustakawanController {
         return dto;
     }
 
+
+
     @DeleteMapping("/delete/{idPustakawan}")
     public DefaultResponse deleteById(@PathVariable("idPustakawan") Integer idPustakawan) {
         DefaultResponse df = new DefaultResponse();
@@ -107,7 +111,6 @@ public class PustakawanController {
 
     @GetMapping("/byid/{idPustakawan}")
     public DefaultResponse getByIdBuku(@PathVariable Integer idPustakawan){
-
         DefaultResponse df = new DefaultResponse();
         Optional<Pustakawan> optionalPustakawan = pustakawanRepository.findById(idPustakawan);
         if(optionalPustakawan.isPresent()){
@@ -116,6 +119,29 @@ public class PustakawanController {
         } else {
             df.setStatus(Boolean.FALSE);
             df.setMessage("Data tidak ada");
+        }
+        return df;
+    }
+
+    @PutMapping("/update/{idPustakawan}")
+    public DefaultResponse update(@PathVariable("idPustakawan") Integer idPustakawan, @RequestBody PustakawanDto pustakawanDto) {
+        DefaultResponse df = new DefaultResponse();
+        Optional<Pustakawan> optionalPustakawan = pustakawanRepository.findById(idPustakawan);
+        Pustakawan pustakawan = optionalPustakawan.get();
+        if (optionalPustakawan.isPresent()) {
+            pustakawan.setNamaPustakawan(pustakawanDto.getNamaPustakawan());
+            pustakawan.setJkPustakawan(pustakawanDto.getJkPustakawan());
+            pustakawan.setAlamatPustakawan(pustakawanDto.getAlamatPustakawan());
+            pustakawan.setNoHpPustakawan(pustakawanDto.getNoHpPustakawan());
+            pustakawan.setUsernamePustakawan(pustakawanDto.getUsernamePustakawan());
+            pustakawan.setPasswordPustakawan(pustakawanDto.getPasswordPustakawan());
+            pustakawan.setStatusPustakawan(pustakawanDto.getStatusPustakawan());
+            pustakawanRepository.save(pustakawan);
+            df.setStatus(Boolean.TRUE);
+            df.setMessage("Data berhasil diperbarui");
+        } else {
+            df.setStatus(Boolean.FALSE);
+            df.setMessage("Data Sudah Terdaftar");
         }
         return df;
     }
