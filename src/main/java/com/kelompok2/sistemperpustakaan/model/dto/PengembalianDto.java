@@ -1,10 +1,14 @@
 package com.kelompok2.sistemperpustakaan.model.dto;
 
-import java.sql.Date;
+import com.fasterxml.jackson.annotation.JsonFormat;
+
+import java.util.Date;
 
 public class PengembalianDto {
     private Integer idPengembalian;
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy")
     private Date tglKembali;
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy")
     private Date jatuhTempo;
     private Integer totalDenda;
     private Integer idPustakawan;

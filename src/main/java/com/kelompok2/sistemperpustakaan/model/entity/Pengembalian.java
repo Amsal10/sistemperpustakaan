@@ -1,19 +1,19 @@
 package com.kelompok2.sistemperpustakaan.model.entity;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.util.Date;
 
 @Entity
 @Table (name = "data_pengembalian")
 public class Pengembalian {
     @Id
-    @Column (name = "id_pengembalian")
+    @Column (name = "id_pengembalian", length = 10)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq_pengembalian")
     private Integer idPengembalian;
+    @Temporal(TemporalType.DATE)
     @Column (name = "tgl_kembali")
     private Date tglKembali;
+    @Temporal(TemporalType.DATE)
     @Column (name = "jatuh_tempo")
     private Date jatuhTempo;
     @Column (name = "total_denda")

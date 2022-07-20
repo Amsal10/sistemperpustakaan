@@ -1,14 +1,12 @@
 package com.kelompok2.sistemperpustakaan.model.entity;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
 @Table(name = "data_pustakawan")
 public class Pustakawan {
     @Id
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq_pustakawan")
     @Column (name = "id_pustakawan", length = 8)
     private Integer idPustakawan;
     @Column (name = "nama_pustakawan")

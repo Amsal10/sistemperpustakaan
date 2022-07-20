@@ -22,13 +22,13 @@ public class PustakawanController {
     private PustakawanRepository pustakawanRepository;
 
     @PostMapping("/login")
-    public DefaultResponse loginPustakawan(@RequestBody LoginDto loginDto){
+    public DefaultResponse loginPustakawan(@RequestBody LoginDto loginDto) {
 
         Optional<Pustakawan> optionalPustakawan = pustakawanRepository.findByUsernamePustakawanAndPasswordPustakawan(loginDto.getUname(), loginDto.getPass());
 
         DefaultResponse df = new DefaultResponse();
 
-        if(optionalPustakawan.isPresent()){
+        if (optionalPustakawan.isPresent()) {
             df.setStatus(Boolean.TRUE);
             df.setMessage("Login berhasil");
         } else {
@@ -39,11 +39,11 @@ public class PustakawanController {
     }
 
     @PostMapping("/save")
-    public DefaultResponse<PustakawanDto> savePustakawan(@RequestBody PustakawanDto pustakawanDto){
+    public DefaultResponse<PustakawanDto> savePustakawan(@RequestBody PustakawanDto pustakawanDto) {
         Pustakawan pustakawan = convertDtoToEntity(pustakawanDto);
         DefaultResponse<PustakawanDto> response = new DefaultResponse();
         Optional<Pustakawan> optionalPustakawan = pustakawanRepository.findById(pustakawanDto.getIdPustakawan());
-        if(optionalPustakawan.isPresent()){
+        if (optionalPustakawan.isPresent()) {
             response.setStatus(Boolean.FALSE);
             response.setMessage("Error, data sudah tersedia");
         } else {
@@ -54,7 +54,7 @@ public class PustakawanController {
         return response;
     }
 
-    public Pustakawan convertDtoToEntity(PustakawanDto dto){
+    public Pustakawan convertDtoToEntity(PustakawanDto dto) {
         Pustakawan pustakawan = new Pustakawan();
         pustakawan.setIdPustakawan(dto.getIdPustakawan());
         pustakawan.setNamaPustakawan(dto.getNamaPustakawan());
@@ -69,16 +69,16 @@ public class PustakawanController {
     }
 
 
-
     @GetMapping("/list")
-    public List<PustakawanDto> getListPustakawan(){
+    public List<PustakawanDto> getListPustakawan() {
         List<PustakawanDto> list = new ArrayList();
-        for(Pustakawan pustakawan :pustakawanRepository.findAll()){
+        for (Pustakawan pustakawan : pustakawanRepository.findAll()) {
             list.add(convertEntityToDto(pustakawan));
         }
         return list;
     }
-    public PustakawanDto convertEntityToDto(Pustakawan entity){
+
+    public PustakawanDto convertEntityToDto(Pustakawan entity) {
         PustakawanDto dto = new PustakawanDto();
         dto.setIdPustakawan(entity.getIdPustakawan());
         dto.setNamaPustakawan(entity.getNamaPustakawan());
@@ -92,13 +92,11 @@ public class PustakawanController {
         return dto;
     }
 
-
-
     @DeleteMapping("/delete/{idPustakawan}")
     public DefaultResponse deleteById(@PathVariable("idPustakawan") Integer idPustakawan) {
         DefaultResponse df = new DefaultResponse();
-        Optional<Pustakawan> optionalPustakawan =pustakawanRepository.findById(idPustakawan);
-        if (optionalPustakawan.isPresent()){
+        Optional<Pustakawan> optionalPustakawan = pustakawanRepository.findById(idPustakawan);
+        if (optionalPustakawan.isPresent()) {
             pustakawanRepository.delete(optionalPustakawan.get());
             df.setStatus(Boolean.TRUE);
             df.setMessage("Data Berhasil Dihapus");
@@ -110,10 +108,10 @@ public class PustakawanController {
     }
 
     @GetMapping("/byid/{idPustakawan}")
-    public DefaultResponse getByIdBuku(@PathVariable Integer idPustakawan){
+    public DefaultResponse getByIdBuku(@PathVariable Integer idPustakawan) {
         DefaultResponse df = new DefaultResponse();
         Optional<Pustakawan> optionalPustakawan = pustakawanRepository.findById(idPustakawan);
-        if(optionalPustakawan.isPresent()){
+        if (optionalPustakawan.isPresent()) {
             df.setStatus(Boolean.TRUE);
             df.setMessage("Data ditemukan");
         } else {

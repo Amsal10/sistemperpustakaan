@@ -50,25 +50,25 @@ public class PengembalianController {
         return pengembalian;
     }
 
-//    @GetMapping("/list")
-//    public List<PengembalianDto> getListPengembalian(){
-//        List<PengembalianDto> list = new ArrayList();
-//        for(Pengembalian pengembalian :pengembalianRepository.findAll()){
-//            list.add(convertEntityToDto(pengembalian));
-//        }
-//        return list;
-//    }
-//    public PengembalianDto convertEntityToDto(Pengembalian entity){
-//        PengembalianDto dto = new PengembalianDto();
-//        dto.setIdPengembalian(entity.getIdPengembalian());
-//        dto.setTglKembali(entity.getTglKembali());
-//        dto.setJatuhTempo(entity.getJatuhTempo());
-//        dto.setTotalDenda(entity.getTotalDenda());
-//        dto.setIdPustakawan(entity.getIdPustakawan());
-//        dto.setIdAnggota(entity.getIdAnggota());
-//        dto.setIdBuku(entity.getIdBuku());
-//        return dto;
-//    }
+    @GetMapping("/list")
+    public List<PengembalianDto> getListPengembalian(){
+        List<PengembalianDto> list = new ArrayList();
+        for(Pengembalian pengembalian :pengembalianRepository.findAll()){
+            list.add(convertEntityToDto(pengembalian));
+        }
+        return list;
+    }
+    public PengembalianDto convertEntityToDto(Pengembalian entity){
+        PengembalianDto dto = new PengembalianDto();
+        dto.setIdPengembalian(entity.getIdPengembalian());
+        dto.setTglKembali(entity.getTglKembali());
+        dto.setJatuhTempo(entity.getJatuhTempo());
+        dto.setTotalDenda(entity.getTotalDenda());
+        dto.setIdPustakawan(entity.getIdPustakawan());
+        dto.setIdAnggota(entity.getIdAnggota());
+        dto.setIdBuku(entity.getIdBuku());
+        return dto;
+    }
 
     @DeleteMapping("/delete/{idPengembalian}")
     public DefaultResponse deleteById(@PathVariable("idPengembalian") Integer idPengembalian) {
