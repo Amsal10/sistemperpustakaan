@@ -35,14 +35,14 @@ public class AnggotaController {
         }
         return response;
     }
-
+// mencari data anggota sesuai Id
     @GetMapping("/getbyid/{idAnggota}")
     public DataDto<AnggotaDto> getByIdAnggota(@PathVariable Integer idAnggota) {
         DataDto<AnggotaDto> data = new DataDto<>();
-        Optional<Anggota> optional = anggotaRepository.findByIdAnggota(idAnggota);
-        if (optional.isPresent()) {
+        Optional<Anggota> opt = anggotaRepository.findByIdAnggota(idAnggota);
+        if (opt.isPresent()) {
             data.setMessage("Data Ditemukan");
-            data.setData(convertEntityToDto(optional.get()));
+            data.setData(convertEntityToDto(opt.get()));
         } else {
             data.setMessage("Data Tidak Ditemukan");
         }

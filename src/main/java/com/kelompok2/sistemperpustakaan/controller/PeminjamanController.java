@@ -34,11 +34,11 @@ public class PeminjamanController {
     }
     @GetMapping("/listPeminjaman")
     public List<PeminjamanDto> getListPeminjaman(){
-        List<PeminjamanDto> list = new ArrayList();
+        List<PeminjamanDto> listPeminjaman = new ArrayList();
         for(Peminjaman peminjaman : peminjamanRepository.findAll()){
-            list.add(convertEntityToDto(peminjaman));
+            listPeminjaman.add(convertEntityToDto(peminjaman));
         }
-        return list;
+        return listPeminjaman;
     }
 
     public Peminjaman convertDtoToEntity(PeminjamanDto peminjamanDto){

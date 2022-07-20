@@ -3,6 +3,7 @@ package com.kelompok2.sistemperpustakaan.model.dto;
 public class DataDto<T> {
 
     private String message;
+    private T data;
 
     public String getMessage() {
         return message;
@@ -19,6 +20,4 @@ public class DataDto<T> {
     public void setData(T data) {
         this.data = data;
     }
-
-    private T data;
 }
