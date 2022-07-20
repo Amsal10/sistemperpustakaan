@@ -1,27 +1,21 @@
 package com.kelompok2.sistemperpustakaan.controller;
 
-
 import com.kelompok2.sistemperpustakaan.model.dto.DefaultResponse;
 import com.kelompok2.sistemperpustakaan.model.dto.PeminjamanDto;
 import com.kelompok2.sistemperpustakaan.model.entity.Peminjaman;
 import com.kelompok2.sistemperpustakaan.repository.PeminjamanRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 @RestController
 @RequestMapping("/peminjaman")
 public class PeminjamanController {
-
     @Autowired
     PeminjamanRepository peminjamanRepository;
-
-
-
     @PostMapping("/save")
     public DefaultResponse<PeminjamanDto> createDataPeminjaman(@RequestBody PeminjamanDto pemDto){
         Peminjaman peminjaman = convertDtoToEntity(pemDto);
@@ -38,6 +32,15 @@ public class PeminjamanController {
         }
     return resPem;
     }
+    @GetMapping("/listPeminjaman")
+    public List<PeminjamanDto> getListPeminjaman(){
+        List<PeminjamanDto> list = new ArrayList();
+        for(Peminjaman peminjaman : peminjamanRepository.findAll()){
+            list.add(convertEntityToDto(peminjaman));
+        }
+        return list;
+    }
+
     public Peminjaman convertDtoToEntity(PeminjamanDto peminjamanDto){
         Peminjaman peminjaman = new Peminjaman();
         peminjaman.setIdAnggota(peminjamanDto.getIdAnggota());

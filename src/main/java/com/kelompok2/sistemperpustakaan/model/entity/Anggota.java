@@ -7,7 +7,7 @@ import javax.persistence.*;
 
 public class Anggota {
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq_user")
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq_anggota")
     @Column(name = "id_Anggota", length  = 5)
     private Integer idAnggota;
     @Column(name = "user_Name", unique = true)

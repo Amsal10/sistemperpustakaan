@@ -1,6 +1,7 @@
 package com.kelompok2.sistemperpustakaan.controller;
 
 import com.kelompok2.sistemperpustakaan.model.dto.AnggotaDto;
+import com.kelompok2.sistemperpustakaan.model.dto.DataDto;
 import com.kelompok2.sistemperpustakaan.model.dto.DefaultResponse;
 import com.kelompok2.sistemperpustakaan.model.entity.Anggota;
 import com.kelompok2.sistemperpustakaan.repository.AnggotaRepository;
@@ -32,24 +33,22 @@ public class AnggotaController {
             response.setStatus(Boolean.TRUE);
             response.setMessage("Data Anggota Berhasil disimpan");
         }
-
         return response;
     }
 
     @GetMapping("/getbyid/{idAnggota}")
-    public DefaultResponse<AnggotaDto> getByIdAnggota(@PathVariable Integer idanggota) {
-        DefaultResponse<AnggotaDto> response = new DefaultResponse<>();
-        Optional<Anggota> optional = anggotaRepository.findByIdAnggota(idanggota);
+    public DataDto<AnggotaDto> getByIdAnggota(@PathVariable Integer idAnggota) {
+        DataDto<AnggotaDto> data = new DataDto<>();
+        Optional<Anggota> optional = anggotaRepository.findByIdAnggota(idAnggota);
         if (optional.isPresent()) {
-            response.setMessage("Data Ditemukan");
-            response.setStatus(Boolean.TRUE);
+            data.setMessage("Data Ditemukan");
+            data.setData(convertEntityToDto(optional.get()));
         } else {
-            response.setMessage("Data Tidak Ditemukan");
-            response.setStatus(Boolean.FALSE);
+            data.setMessage("Data Tidak Ditemukan");
         }
-        return response;
+        return data;
     }
-    
+
     // menampilkan data mahasisiwa dalam database
     @GetMapping("/listanggota")
     public List<AnggotaDto> getListAnggota(){
@@ -85,7 +84,20 @@ public class AnggotaController {
         }
         return defResA;
     }
-
+    @DeleteMapping("/delete/{idAnggota}")
+    public DefaultResponse deleteIdAnggota(@PathVariable("idAnggota") Integer idAnggota) {
+        DefaultResponse df = new DefaultResponse();
+        Optional<Anggota> optAg =anggotaRepository.findByIdAnggota(idAnggota);
+        if (optAg.isPresent()){
+            anggotaRepository.delete(optAg.get());
+            df.setStatus(Boolean.TRUE);
+            df.setMessage("Data idAnggota Berhasil Dihapus");
+        } else {
+            df.setStatus(Boolean.FALSE);
+            df.setMessage("Data Tidak Ditemukan");
+        }
+        return df;
+    }
 
     public Anggota convertDtoToEntity(AnggotaDto anggotaDto){
         Anggota anggota = new Anggota();
