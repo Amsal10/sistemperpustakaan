@@ -1,7 +1,6 @@
 package com.kelompok2.sistemperpustakaan.model.dto;
 
 public class AnggotaDto {
-
     private Integer idAnggota;
     private String userName;
     private String namaAnggota;

@@ -1,15 +1,13 @@
 package com.kelompok2.sistemperpustakaan.model.entity;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.util.Date;
 
 @Entity
 @Table(name = "data_peminjaman")
 public class Peminjaman {
     @Id
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq_user")
     @Column (name = "id_peminjaman")
     private Integer idPeminjaman;
     @Column (name = "tgl_pinjam")
@@ -22,7 +20,6 @@ public class Peminjaman {
     private Integer idAnggota;
     @Column (name = "id_buku")
     private String idBuku;
-
 
     public Integer getIdPeminjaman() {
         return idPeminjaman;

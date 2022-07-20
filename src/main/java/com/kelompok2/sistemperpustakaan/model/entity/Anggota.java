@@ -7,9 +7,10 @@ import javax.persistence.*;
 
 public class Anggota {
     @Id
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq_user")
     @Column(name = "id_Anggota", length  = 5)
     private Integer idAnggota;
-    @Column(name = "user_Name")
+    @Column(name = "user_Name", unique = true)
     private String userName;
     @Column(name = "nama_Anggota")
     private String namaAnggota;
@@ -25,11 +26,6 @@ public class Anggota {
     private String passwordAnggota;
     @Column(name = "status_Anggota")
     private String statusAnggota;
-
-    @OneToOne
-    @JoinColumn(name = "detailid", insertable = false, updatable = false)
-    private Peminjaman peminjaman;
-
 
     public Integer getIdAnggota() {
         return idAnggota;
@@ -101,14 +97,6 @@ public class Anggota {
 
     public void setStatusAnggota(String statusAnggota) {
         this.statusAnggota = statusAnggota;
-    }
-
-    public Peminjaman getPeminjaman() {
-        return peminjaman;
-    }
-
-    public void setPeminjaman(Peminjaman peminjaman) {
-        this.peminjaman = peminjaman;
     }
 }
 

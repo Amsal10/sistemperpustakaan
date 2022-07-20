@@ -18,9 +18,9 @@ public class AnggotaController {
     @Autowired
     AnggotaRepository anggotaRepository;
 
-    // Input Data diri Anggota
+    // Insert Data diri Anggota
     @PostMapping("/save")
-    public DefaultResponse<AnggotaDto> savadataanggota(@RequestBody AnggotaDto anggotaDto){
+    public DefaultResponse<AnggotaDto> savaDataAnggota(@RequestBody AnggotaDto anggotaDto){
         Anggota anggota = convertDtoToEntity(anggotaDto);
         DefaultResponse<AnggotaDto> response = new DefaultResponse<>();
         Optional<Anggota> optional = anggotaRepository.findByIdAnggota(anggotaDto.getIdAnggota());
@@ -36,7 +36,7 @@ public class AnggotaController {
         return response;
     }
 
-    @GetMapping("/getbyname/{idAnggota}")
+    @GetMapping("/getbyid/{idAnggota}")
     public DefaultResponse<AnggotaDto> getByIdAnggota(@PathVariable Integer idanggota) {
         DefaultResponse<AnggotaDto> response = new DefaultResponse<>();
         Optional<Anggota> optional = anggotaRepository.findByIdAnggota(idanggota);
@@ -54,12 +54,38 @@ public class AnggotaController {
     @GetMapping("/listanggota")
     public List<AnggotaDto> getListAnggota(){
         List<AnggotaDto> list = new ArrayList();
-        for(Anggota m : anggotaRepository.findAll()){
-            list.add(convertEntityToDto(m));
+        for(Anggota anggota : anggotaRepository.findAll()){
+            list.add(convertEntityToDto(anggota));
         }
-
         return list;
     }
+
+    @PutMapping("/updateAnggota/{idAnggota}")
+    public DefaultResponse updateAnggota(@PathVariable("idAnggota") Integer idAnggota, @RequestBody AnggotaDto anggotaDto) {
+        DefaultResponse defResA = new DefaultResponse();
+        Optional<Anggota> optAng = anggotaRepository.findByIdAnggota(idAnggota);
+        Anggota objAng = optAng.get();
+        if (optAng.isPresent()) {
+
+            objAng.setUserName(anggotaDto.getUserName());
+            objAng.setNoHpAnggota(anggotaDto.getNoHpAnggota());
+            objAng.setJkAnggota(anggotaDto.getJkAnggota());
+            objAng.setStatusAnggota(anggotaDto.getStatusAnggota());
+            objAng.setAlamatAnggota(anggotaDto.getAlamatAnggota());
+            objAng.setNamaAnggota(anggotaDto.getNamaAnggota());
+            objAng.setPekerjaan(anggotaDto.getPekerjaan());
+            objAng.setPasswordAnggota(anggotaDto.getPasswordAnggota());
+
+            anggotaRepository.save(objAng);
+            defResA.setStatus(Boolean.TRUE);
+            defResA.setMessage("Data Berhasil Disimpan");
+        } else {
+            defResA.setStatus(Boolean.FALSE);
+            defResA.setMessage("Kode Sudah Terdaftar");
+        }
+        return defResA;
+    }
+
 
     public Anggota convertDtoToEntity(AnggotaDto anggotaDto){
         Anggota anggota = new Anggota();
