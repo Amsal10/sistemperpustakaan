@@ -24,12 +24,13 @@ public class PeminjamanController {
     public DefaultResponse<PeminjamanDto> createDataPeminjaman(@RequestBody PeminjamanDto pemDto){
         Peminjaman peminjaman = convertDtoToEntity(pemDto);
         DefaultResponse<PeminjamanDto> resPem = new DefaultResponse<>();
-        Optional<Peminjaman> opt = peminjamanRepository.findByIdpeminjaman(pemDto.getIdpeminjaman());
+        Optional<Peminjaman> opt = peminjamanRepository.findByIdPeminjaman(pemDto.getIdPeminjaman());
         if(opt.isPresent()){
             resPem.setStatus(Boolean.FALSE);
             resPem.setMessage("Data yang anda masuka sudah Terisi");
         }
         else{
+            peminjamanRepository.save(peminjaman);
             resPem.setStatus(Boolean.TRUE);
             resPem.setMessage("Terima kasih, data anda sudah tersimpan");
         }
@@ -37,23 +38,23 @@ public class PeminjamanController {
     }
     public Peminjaman convertDtoToEntity(PeminjamanDto peminjamanDto){
         Peminjaman peminjaman = new Peminjaman();
-        peminjaman.setIdanggota(peminjamanDto.getIdanggota());
-        peminjaman.setIdbuku(peminjamanDto.getIdbuku());
-        peminjaman.setIdpeminjaman(peminjamanDto.getIdpeminjaman());
-        peminjaman.setIdpetugas(peminjamanDto.getIdpetugas());
-        peminjaman.setTglpinjam(peminjamanDto.getTglpinjam());
-        peminjaman.setTglkembali(peminjamanDto.getTglkembali());
+        peminjaman.setIdAnggota(peminjamanDto.getIdAnggota());
+        peminjaman.setIdBuku(peminjamanDto.getIdBuku());
+        peminjaman.setIdPeminjaman(peminjamanDto.getIdPeminjaman());
+        peminjaman.setIdPustakawan(peminjamanDto.getIdPustakawan());
+        peminjaman.setTglPinjam(peminjamanDto.getTglPinjam());
+        peminjaman.setTglKembali(peminjamanDto.getTglKembali());
         return peminjaman;
     }
 
     public PeminjamanDto convertEntityToDto(Peminjaman entity){
         PeminjamanDto dto = new PeminjamanDto();
-        dto.setIdanggota(entity.getIdanggota());
-        dto.setIdbuku(entity.getIdbuku());
-        dto.setIdpeminjaman(entity.getIdpeminjaman());
-        dto.setIdpetugas(entity.getIdpetugas());
-        dto.setTglpinjam(entity.getTglpinjam());
-        dto.setTglkembali(entity.getTglkembali());
+        dto.setIdAnggota(entity.getIdAnggota());
+        dto.setIdBuku(entity.getIdBuku());
+        dto.setIdPeminjaman(entity.getIdPeminjaman());
+        dto.setIdPustakawan(entity.getIdPustakawan());
+        dto.setTglPinjam(entity.getTglPinjam());
+        dto.setTglKembali(entity.getTglKembali());
         return dto;
     }
 }

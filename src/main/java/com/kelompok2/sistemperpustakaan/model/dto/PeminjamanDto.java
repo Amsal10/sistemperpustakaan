@@ -3,47 +3,58 @@ package com.kelompok2.sistemperpustakaan.model.dto;
 import java.util.Date;
 
 public class PeminjamanDto {
-    private Integer idpeminjaman;
-    private Date tglpinjam;
-    private Date tglkembali;
-    private Integer idpetugas;
-    private Integer idanggota;
-    private String idbuku;
+    private Integer idPeminjaman;
+    private Date tglPinjam;
+    private Date tglKembali;
+    private Integer idPustakawan;
+    private Integer idAnggota;
+    private String idBuku;
 
-    public Integer getIdpeminjaman() {
-        return idpeminjaman;
+    public Integer getIdPeminjaman() {
+        return idPeminjaman;
     }
-    public void setIdpeminjaman(Integer idpeminjaman) {
-        this.idpeminjaman = idpeminjaman;
+
+    public void setIdPeminjaman(Integer idPeminjaman) {
+        this.idPeminjaman = idPeminjaman;
     }
-    public Date getTglpinjam() {
-        return tglpinjam;
+
+    public Date getTglPinjam() {
+        return tglPinjam;
     }
-    public void setTglpinjam(Date tglpinjam) {
-        this.tglpinjam = tglpinjam;
+
+    public void setTglPinjam(Date tglPinjam) {
+        this.tglPinjam = tglPinjam;
     }
-    public Date getTglkembali() {
-        return tglkembali;
+
+    public Date getTglKembali() {
+        return tglKembali;
     }
-    public void setTglkembali(Date tglkembali) {
-        this.tglkembali = tglkembali;
+
+    public void setTglKembali(Date tglKembali) {
+        this.tglKembali = tglKembali;
     }
-    public Integer getIdpetugas() {
-        return idpetugas;
+
+    public Integer getIdPustakawan() {
+        return idPustakawan;
     }
-    public void setIdpetugas(Integer idpetugas) {
-        this.idpetugas = idpetugas;
+
+    public void setIdPustakawan(Integer idPustakawan) {
+        this.idPustakawan = idPustakawan;
     }
-    public Integer getIdanggota() {
-        return idanggota;
+
+    public Integer getIdAnggota() {
+        return idAnggota;
     }
-    public void setIdanggota(Integer idanggota) {
-        this.idanggota = idanggota;
+
+    public void setIdAnggota(Integer idAnggota) {
+        this.idAnggota = idAnggota;
     }
-    public String getIdbuku() {
-        return idbuku;
+
+    public String getIdBuku() {
+        return idBuku;
     }
-    public void setIdbuku(String idbuku) {
-        this.idbuku = idbuku;
+
+    public void setIdBuku(String idBuku) {
+        this.idBuku = idBuku;
     }
 }

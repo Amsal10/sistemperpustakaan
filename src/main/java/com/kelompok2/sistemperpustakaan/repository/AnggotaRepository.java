@@ -7,7 +7,7 @@ import java.util.Optional;
 
 public interface AnggotaRepository extends JpaRepository<Anggota, Long> {
 
-    Optional<Anggota> findByIdanggota(Integer idanggota);
+    Optional<Anggota> findByIdAnggota(Integer idAnggota);
 //    Optional<Anggota> findByNamaAnggota(String namaAnggota);
 
 

@@ -23,7 +23,7 @@ public class AnggotaController {
     public DefaultResponse<AnggotaDto> savadataanggota(@RequestBody AnggotaDto anggotaDto){
         Anggota anggota = convertDtoToEntity(anggotaDto);
         DefaultResponse<AnggotaDto> response = new DefaultResponse<>();
-        Optional<Anggota> optional = anggotaRepository.findByIdanggota(anggotaDto.getIdanggota());
+        Optional<Anggota> optional = anggotaRepository.findByIdAnggota(anggotaDto.getIdAnggota());
         if(optional.isPresent()){
             response.setStatus(Boolean.FALSE);
             response.setMessage("Error, Data Sudah Tersedia");
@@ -39,7 +39,7 @@ public class AnggotaController {
     @GetMapping("/getbyname/{idAnggota}")
     public DefaultResponse<AnggotaDto> getByIdAnggota(@PathVariable Integer idanggota) {
         DefaultResponse<AnggotaDto> response = new DefaultResponse<>();
-        Optional<Anggota> optional = anggotaRepository.findByIdanggota(idanggota);
+        Optional<Anggota> optional = anggotaRepository.findByIdAnggota(idanggota);
         if (optional.isPresent()) {
             response.setMessage("Data Ditemukan");
             response.setStatus(Boolean.TRUE);
@@ -64,15 +64,15 @@ public class AnggotaController {
     public Anggota convertDtoToEntity(AnggotaDto anggotaDto){
         Anggota anggota = new Anggota();
 
-        anggota.setIdanggota(anggotaDto.getIdanggota());
-        anggota.setUsername(anggotaDto.getUsername());
-        anggota.setNamaanggota(anggotaDto.getNamaanggota());
-        anggota.setJkanggota(anggotaDto.getJkanggota());
+        anggota.setIdAnggota(anggotaDto.getIdAnggota());
+        anggota.setUserName(anggotaDto.getUserName());
+        anggota.setNamaAnggota(anggotaDto.getNamaAnggota());
+        anggota.setJkAnggota(anggotaDto.getJkAnggota());
         anggota.setPekerjaan(anggotaDto.getPekerjaan());
-        anggota.setAlamatanggota(anggotaDto.getAlamatanggota());
-        anggota.setNohpanggota(anggotaDto.getNohpanggota());
-        anggota.setPasswordanggota(anggotaDto.getPasswordanggota());
-        anggota.setStatusanggota(anggotaDto.getStatusanggota());
+        anggota.setAlamatAnggota(anggotaDto.getAlamatAnggota());
+        anggota.setNoHpAnggota(anggotaDto.getNoHpAnggota());
+        anggota.setPasswordAnggota(anggotaDto.getPasswordAnggota());
+        anggota.setStatusAnggota(anggotaDto.getStatusAnggota());
 
      return anggota;
     }
@@ -80,15 +80,15 @@ public class AnggotaController {
     public AnggotaDto convertEntityToDto(Anggota entity){
         AnggotaDto dto = new AnggotaDto();
 
-        dto.setIdanggota(entity.getIdanggota());
-        dto.setUsername(entity.getUsername());
-        dto.setNamaanggota(entity.getNamaanggota());
-        dto.setJkanggota(entity.getJkanggota());
+        dto.setIdAnggota(entity.getIdAnggota());
+        dto.setUserName(entity.getUserName());
+        dto.setNamaAnggota(entity.getNamaAnggota());
+        dto.setJkAnggota(entity.getJkAnggota());
         dto.setPekerjaan(entity.getPekerjaan());
-        dto.setAlamatanggota(entity.getAlamatanggota());
-        dto.setNohpanggota(entity.getNohpanggota());
-        dto.setPasswordanggota(entity.getPasswordanggota());
-        dto.setStatusanggota(entity.getStatusanggota());
+        dto.setAlamatAnggota(entity.getAlamatAnggota());
+        dto.setNoHpAnggota(entity.getNoHpAnggota());
+        dto.setPasswordAnggota(entity.getPasswordAnggota());
+        dto.setStatusAnggota(entity.getStatusAnggota());
 
         return dto;
     }

@@ -7,5 +7,5 @@ import java.util.Optional;
 
 public interface PeminjamanRepository extends JpaRepository<Peminjaman, String > {
 
-    Optional<Peminjaman> findByIdpeminjaman (Integer idpeminjaman);
+    Optional<Peminjaman> findByIdPeminjaman(Integer idPeminjaman);
 }
