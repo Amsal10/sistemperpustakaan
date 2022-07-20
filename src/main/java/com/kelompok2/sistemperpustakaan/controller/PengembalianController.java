@@ -84,4 +84,19 @@ public class PengembalianController {
         }
         return df;
     }
+
+    @GetMapping("/byid/{idPengembalian}")
+    public DefaultResponse getByIdPengembalian(@PathVariable Integer idPengembalian){
+
+        DefaultResponse df = new DefaultResponse();
+        Optional<Pengembalian> optionalPengembalian = pengembalianRepository.findById(idPengembalian);
+        if(optionalPengembalian.isPresent()){
+            df.setStatus(Boolean.TRUE);
+            df.setMessage("Data ditemukan");
+        } else {
+            df.setStatus(Boolean.FALSE);
+            df.setMessage("Data tidak ada");
+        }
+        return df;
+    }
 }

@@ -105,4 +105,19 @@ public class PustakawanController {
         return df;
     }
 
+    @GetMapping("/byid/{idPustakawan}")
+    public DefaultResponse getByIdBuku(@PathVariable Integer idPustakawan){
+
+        DefaultResponse df = new DefaultResponse();
+        Optional<Pustakawan> optionalPustakawan = pustakawanRepository.findById(idPustakawan);
+        if(optionalPustakawan.isPresent()){
+            df.setStatus(Boolean.TRUE);
+            df.setMessage("Data ditemukan");
+        } else {
+            df.setStatus(Boolean.FALSE);
+            df.setMessage("Data tidak ada");
+        }
+        return df;
+    }
+
 }
