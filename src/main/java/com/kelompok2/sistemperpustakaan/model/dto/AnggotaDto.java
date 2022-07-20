@@ -1,16 +1,16 @@
 package com.kelompok2.sistemperpustakaan.model.dto;
 
 public class AnggotaDto {
+
     private Integer idAnggota;
     private String userName;
     private String namaAnggota;
     private String jkAnggota;
     private String pekerjaan;
     private String alamatAnggota;
-    private Integer noHpAnggota;
+    private String noHpAnggota;
     private String passwordAnggota;
     private String statusAnggota;
-
 
     public Integer getIdAnggota() {
         return idAnggota;
@@ -60,11 +60,11 @@ public class AnggotaDto {
         this.alamatAnggota = alamatAnggota;
     }
 
-    public Integer getNoHpAnggota() {
+    public String getNoHpAnggota() {
         return noHpAnggota;
     }
 
-    public void setNoHpAnggota(Integer noHpAnggota) {
+    public void setNoHpAnggota(String noHpAnggota) {
         this.noHpAnggota = noHpAnggota;
     }
 

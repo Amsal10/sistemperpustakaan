@@ -7,7 +7,7 @@ import java.util.Date;
 @Table(name = "data_peminjaman")
 public class Peminjaman {
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq_peminjaman")
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column (name = "id_peminjaman", length = 5)
     private Integer idPeminjaman;
     @Column (name = "tgl_pinjam")

@@ -7,7 +7,7 @@ import javax.persistence.*;
 
 public class Anggota {
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq_anggota")
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id_Anggota", length  = 5)
     private Integer idAnggota;
     @Column(name = "user_Name", unique = true)
@@ -21,11 +21,22 @@ public class Anggota {
     @Column(name = "alamat_Anggota")
     private String alamatAnggota;
     @Column(name = "no_Hp_Anggota")
-    private Integer noHpAnggota;
+    private String noHpAnggota;
     @Column(name = "password_Anggota")
     private String passwordAnggota;
     @Column(name = "status_Anggota")
     private String statusAnggota;
+
+    //Foerign Key dari tabel peminjaman
+    @Column (name = "id_peminjaman", length = 5)
+    private Integer idPeminjaman;
+    //Foerign Key dari tabel pengembalian
+//    @Column (name = "id_pengembalian", length = 5)
+//    private Integer idPengembalian;
+
+    @OneToOne
+    @JoinColumn(name="id_peminjaman", insertable = false, updatable = false)
+    private Peminjaman anggotaPeminjaman;
 
     public Integer getIdAnggota() {
         return idAnggota;
@@ -75,11 +86,11 @@ public class Anggota {
         this.alamatAnggota = alamatAnggota;
     }
 
-    public Integer getNoHpAnggota() {
+    public String getNoHpAnggota() {
         return noHpAnggota;
     }
 
-    public void setNoHpAnggota(Integer noHpAnggota) {
+    public void setNoHpAnggota(String noHpAnggota) {
         this.noHpAnggota = noHpAnggota;
     }
 
@@ -97,6 +108,22 @@ public class Anggota {
 
     public void setStatusAnggota(String statusAnggota) {
         this.statusAnggota = statusAnggota;
+    }
+
+    public Integer getIdPeminjaman() {
+        return idPeminjaman;
+    }
+
+    public void setIdPeminjaman(Integer idPeminjaman) {
+        this.idPeminjaman = idPeminjaman;
+    }
+
+    public Peminjaman getAnggotaPeminjaman() {
+        return anggotaPeminjaman;
+    }
+
+    public void setAnggotaPeminjaman(Peminjaman anggotaPeminjaman) {
+        this.anggotaPeminjaman = anggotaPeminjaman;
     }
 }
 
