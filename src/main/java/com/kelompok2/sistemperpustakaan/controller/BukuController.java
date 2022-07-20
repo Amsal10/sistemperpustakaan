@@ -59,6 +59,7 @@ public class BukuController {
         }
         return list;
     }
+
     public BukuDto convertEntityToDto(Buku entity){
         BukuDto dto = new BukuDto();
         dto.setIdBuku(entity.getIdBuku());
@@ -85,7 +86,7 @@ public class BukuController {
         return response;
     }
 
-// menghapus data buku dari database --/buku/delete/{idbuku}
+// menghapus data buku dari table  --/buku/delete/{idbuku}
     @DeleteMapping("/delete/{idbuku}")
     public DefaultResponse deleteById(@PathVariable("idBuku") String idBuku) {
         DefaultResponse df = new DefaultResponse();
@@ -100,23 +101,25 @@ public class BukuController {
         }
         return df;
     }
-// meng-update data buku --/buku/update/{idbuku}
+// meng-update judul buku dan penulis buku berdasarkan idBuku --/buku/update/{idbuku}
     @PutMapping("/update/{idBuku}")
     public DefaultResponse update(@PathVariable("idBuku") String idBuku, @RequestBody BukuDto bukuDto) {
         DefaultResponse df = new DefaultResponse();
         Optional<Buku> optionalBuku = bukuRepository.findById(idBuku);
         Buku book = optionalBuku.get();
         if (optionalBuku.isPresent()) {
+            book.setJudulBuku(bukuDto.getJudulBuku());
             book.setPenulisBuku(bukuDto.getPenulisBuku());
             bukuRepository.save(book);
             df.setStatus(Boolean.TRUE);
 //            df.setData(bukuDto);
-            df.setMessage("Data Berhasil Disimpan");
+            df.setMessage("Data berhasil diperbarui");
         } else {
             df.setStatus(Boolean.FALSE);
-            df.setMessage("Kode Sudah Terdaftar");
+            df.setMessage("Data Sudah Terdaftar");
         }
         return df;
     }
+
 
 }
