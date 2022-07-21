@@ -99,4 +99,27 @@ public class PengembalianController {
         }
         return df;
     }
+
+    @PutMapping("/update/{idPengembalian}")
+    public DefaultResponse update(@PathVariable("idPengembalian") Integer idPengembalian, @RequestBody PengembalianDto pengembalianDto) {
+        DefaultResponse df = new DefaultResponse();
+        Optional<Pengembalian> optionalPengembalian = pengembalianRepository.findById(idPengembalian);
+        Pengembalian pengembalian = optionalPengembalian.get();
+        if (optionalPengembalian.isPresent()) {
+            pengembalian.setTglKembali(pengembalianDto.getTglKembali());
+            pengembalian.setJatuhTempo(pengembalianDto.getJatuhTempo());
+            pengembalian.setTotalDenda(pengembalianDto.getTotalDenda());
+            pengembalian.setIdPustakawan(pengembalianDto.getIdPustakawan());
+            pengembalian.setIdAnggota(pengembalianDto.getIdAnggota());
+            pengembalian.setIdBuku(pengembalianDto.getIdBuku());
+
+            pengembalianRepository.save(pengembalian);
+            df.setStatus(Boolean.TRUE);
+            df.setMessage("Data berhasil diperbarui");
+        } else {
+            df.setStatus(Boolean.FALSE);
+            df.setMessage("Data Sudah Terdaftar");
+        }
+        return df;
+    }
 }
