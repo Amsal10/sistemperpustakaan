@@ -22,10 +22,10 @@ public class SistemPerpustakaanController {
     private BukuRepository bukuRepository;
 
     @GetMapping("/byid/{idbuku}/namabuku/{namabuku}")
-    public DefaultResponse getByIdBuku(@PathVariable String idbuku, @PathVariable String namabuku){
+    public DefaultResponse getByIdBuku(@PathVariable Integer idbuku, @PathVariable String namabuku){
 
         DefaultResponse df = new DefaultResponse();
-        Optional<Buku> optionalBuku = bukuRepository.findById(idbuku);
+        Optional<Buku> optionalBuku = bukuRepository.findByIdBuku(idbuku);
         if(optionalBuku.isPresent()){
             df.setStatus(Boolean.TRUE);
             df.setMessage("Data ditemukan");

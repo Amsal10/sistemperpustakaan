@@ -1,9 +1,7 @@
 package com.kelompok2.sistemperpustakaan.model.dto;
 
-import javax.persistence.Column;
-
 public class BukuDto {
-    private String idBuku;
+    private Integer idBuku;
     private String judulBuku;
     private String penulisBuku;
     private String penerbitBuku;
@@ -11,11 +9,11 @@ public class BukuDto {
     private String lokasiRak;
     private Integer jmlBuku;
 
-    public String getIdBuku() {
+    public Integer getIdBuku() {
         return idBuku;
     }
 
-    public void setIdBuku(String idBuku) {
+    public void setIdBuku(Integer idBuku) {
         this.idBuku = idBuku;
     }
 
