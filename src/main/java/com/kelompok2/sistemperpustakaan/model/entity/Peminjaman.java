@@ -1,6 +1,7 @@
 package com.kelompok2.sistemperpustakaan.model.entity;
 
 import javax.persistence.*;
+import javax.persistence.criteria.CriteriaBuilder;
 import java.util.Date;
 
 @Entity
@@ -12,6 +13,15 @@ public class Peminjaman {
     private Integer idPeminjaman;
     @Column (name = "tgl_pinjam")
     private Date tglPinjam;
+
+    public Integer getIdBuku() {
+        return idBuku;
+    }
+
+    public void setIdBuku(Integer idBuku) {
+        this.idBuku = idBuku;
+    }
+
     @Column (name = "tgl_kembali")
     private Date tglKembali;
     @Column (name = "id_pustakawan")
@@ -19,8 +29,44 @@ public class Peminjaman {
     @Column (name = "id_anggota")
     private Integer idAnggota;
     @Column (name = "id_buku")
-    private String idBuku;
+    private Integer idBuku;
 
+    @OneToOne
+    @JoinColumn(name="id_anggota", insertable = false, updatable = false)
+    private Anggota anggotaPeminjaman;
+
+    @OneToOne
+    @JoinColumn(name="id_pustakawan", insertable = false, updatable = false)
+    private Pustakawan pustakawanPeminjaman;
+
+
+    public Pustakawan getPustakawanPeminjaman() {
+        return pustakawanPeminjaman;
+    }
+
+    public void setPustakawanPeminjaman(Pustakawan pustakawanPeminjaman) {
+        this.pustakawanPeminjaman = pustakawanPeminjaman;
+    }
+
+    @OneToOne
+    @JoinColumn(name="id_buku", insertable = false, updatable = false)
+    private Buku bukuPeminjaman;
+
+    public Anggota getAnggotaPeminjaman() {
+        return anggotaPeminjaman;
+    }
+
+    public void setAnggotaPeminjaman(Anggota anggotaPeminjaman) {
+        this.anggotaPeminjaman = anggotaPeminjaman;
+    }
+
+    public Buku getBukuPeminjaman() {
+        return bukuPeminjaman;
+    }
+
+    public void setBukuPeminjaman(Buku bukuPeminjaman) {
+        this.bukuPeminjaman = bukuPeminjaman;
+    }
 
     public Integer getIdPeminjaman() {
         return idPeminjaman;
@@ -62,11 +108,4 @@ public class Peminjaman {
         this.idAnggota = idAnggota;
     }
 
-    public String getIdBuku() {
-        return idBuku;
-    }
-
-    public void setIdBuku(String idBuku) {
-        this.idBuku = idBuku;
-    }
 }

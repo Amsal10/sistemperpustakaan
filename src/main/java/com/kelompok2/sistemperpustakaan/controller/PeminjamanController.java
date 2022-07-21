@@ -1,8 +1,11 @@
 package com.kelompok2.sistemperpustakaan.controller;
 
+import com.kelompok2.sistemperpustakaan.model.dto.DataPeminjamanAnggotaDto;
 import com.kelompok2.sistemperpustakaan.model.dto.DefaultResponse;
 import com.kelompok2.sistemperpustakaan.model.dto.PeminjamanDto;
+import com.kelompok2.sistemperpustakaan.model.entity.Anggota;
 import com.kelompok2.sistemperpustakaan.model.entity.Peminjaman;
+import com.kelompok2.sistemperpustakaan.repository.AnggotaRepository;
 import com.kelompok2.sistemperpustakaan.repository.PeminjamanRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -16,6 +19,38 @@ import java.util.Optional;
 public class PeminjamanController {
     @Autowired
     PeminjamanRepository peminjamanRepository;
+    @Autowired
+    AnggotaRepository anggotaRepository;
+
+    //join table getbyidAnggota oneToOne Table
+//    @GetMapping("/listPeminjaman/{idPeminjamn}")
+//    public List<DataPeminjamanAnggotaDto> getListDataPeminjaman(@PathVariable Integer idPeminjamn) {
+//        List<DataPeminjamanAnggotaDto> listDto = new ArrayList<>();
+//        Optional<Peminjaman> optPem = peminjamanRepository.findByIdPeminjaman(idPeminjamn);
+//        for(Peminjaman peminjaman : peminjamanRepository.findAll()){
+////            listDto.add(convertEntityToDto(peminjaman));
+//        }
+//        return listDto;
+//    }
+
+    @GetMapping("/pemberitahuanPeminjaman/{idPeminjaman}")
+    public DataPeminjamanAnggotaDto getListHistoryPeminjaman(@PathVariable Integer idPeminjaman) {
+        Optional<Peminjaman> optPem = peminjamanRepository.findByIdPeminjaman(idPeminjaman);
+        DataPeminjamanAnggotaDto dto = new DataPeminjamanAnggotaDto();
+        if (optPem.isPresent()) {
+            Peminjaman peminjaman = optPem.get();
+            dto.setNamaAnggota(peminjaman.getAnggotaPeminjaman().getNamaAnggota());
+            dto.setPekerjaan(peminjaman.getAnggotaPeminjaman().getPekerjaan());
+            dto.setJudulBuku(peminjaman.getBukuPeminjaman().getJudulBuku());
+            dto.setTglKembali(peminjaman.getTglKembali());
+            dto.setTglPinjam(peminjaman.getTglPinjam());
+            dto.setNamaPustakawan(peminjaman.getPustakawanPeminjaman().getNamaPustakawan());
+            dto.setNoHpPustakawan(peminjaman.getPustakawanPeminjaman().getNoHpPustakawan());
+        }
+        return dto;
+    }
+
+
     @PostMapping("/save")
     public DefaultResponse<PeminjamanDto> createDataPeminjaman(@RequestBody PeminjamanDto pemDto){
         Peminjaman peminjaman = convertDtoToEntity(pemDto);

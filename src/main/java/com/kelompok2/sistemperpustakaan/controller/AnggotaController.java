@@ -1,9 +1,6 @@
 package com.kelompok2.sistemperpustakaan.controller;
 
-import com.kelompok2.sistemperpustakaan.model.dto.AnggotaDto;
-import com.kelompok2.sistemperpustakaan.model.dto.DataDto;
-import com.kelompok2.sistemperpustakaan.model.dto.DataPeminjamanAnggotaDto;
-import com.kelompok2.sistemperpustakaan.model.dto.DefaultResponse;
+import com.kelompok2.sistemperpustakaan.model.dto.*;
 import com.kelompok2.sistemperpustakaan.model.entity.Anggota;
 import com.kelompok2.sistemperpustakaan.repository.AnggotaRepository;
 import com.kelompok2.sistemperpustakaan.repository.PeminjamanRepository;
@@ -20,7 +17,6 @@ public class AnggotaController {
 
     @Autowired
     AnggotaRepository anggotaRepository;
-
     @Autowired
     PeminjamanRepository peminjamanRepository;
 
@@ -53,21 +49,6 @@ public class AnggotaController {
         }
         return data;
     }
-
-//join table getbyidAnggota oneToOne Table
-@GetMapping("/datajoin1/{idAnggota}")
-public DataPeminjamanAnggotaDto getListAggPem(@PathVariable Integer idAnggota) {
-    Optional<Anggota> optAng = anggotaRepository.findByIdAnggota(idAnggota);
-    DataPeminjamanAnggotaDto dto = new DataPeminjamanAnggotaDto();
-    if (optAng.isPresent()) {
-        Anggota anggota = optAng.get();
-        dto.setNamaAnggota(anggota.getNamaAnggota());
-        dto.setTglPinjam(anggota.getAnggotaPeminjaman().getTglPinjam());
-        dto.setTglKembali(anggota.getAnggotaPeminjaman().getTglKembali());
-        dto.setPekerjaan(anggota.getPekerjaan());
-    }
-    return dto;
-}
 
     // menampilkan data mahasisiwa dalam database
     @GetMapping("/listanggota")

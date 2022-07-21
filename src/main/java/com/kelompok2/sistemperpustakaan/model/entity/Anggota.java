@@ -27,17 +27,6 @@ public class Anggota {
     @Column(name = "status_Anggota")
     private String statusAnggota;
 
-    //Foerign Key dari tabel peminjaman
-    @Column (name = "id_peminjaman", length = 5)
-    private Integer idPeminjaman;
-    //Foerign Key dari tabel pengembalian
-//    @Column (name = "id_pengembalian", length = 5)
-//    private Integer idPengembalian;
-
-    @OneToOne
-    @JoinColumn(name="id_peminjaman", insertable = false, updatable = false)
-    private Peminjaman anggotaPeminjaman;
-
     public Integer getIdAnggota() {
         return idAnggota;
     }
@@ -110,21 +99,6 @@ public class Anggota {
         this.statusAnggota = statusAnggota;
     }
 
-    public Integer getIdPeminjaman() {
-        return idPeminjaman;
-    }
-
-    public void setIdPeminjaman(Integer idPeminjaman) {
-        this.idPeminjaman = idPeminjaman;
-    }
-
-    public Peminjaman getAnggotaPeminjaman() {
-        return anggotaPeminjaman;
-    }
-
-    public void setAnggotaPeminjaman(Peminjaman anggotaPeminjaman) {
-        this.anggotaPeminjaman = anggotaPeminjaman;
-    }
 }
 
 

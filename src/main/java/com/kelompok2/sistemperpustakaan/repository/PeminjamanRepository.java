@@ -5,7 +5,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.Optional;
 
-public interface PeminjamanRepository extends JpaRepository<Peminjaman, String > {
+public interface PeminjamanRepository extends JpaRepository<Peminjaman, Long > {
 
     Optional<Peminjaman> findByIdPeminjaman(Integer idPeminjaman);
 }

@@ -12,7 +12,7 @@ public class PeminjamanDto {
     private Date tglKembali;
     private Integer idPustakawan;
     private Integer idAnggota;
-    private String idBuku;
+    private Integer idBuku;
 
     public Integer getIdPeminjaman() {
         return idPeminjaman;
@@ -54,11 +54,11 @@ public class PeminjamanDto {
         this.idAnggota = idAnggota;
     }
 
-    public String getIdBuku() {
+    public Integer getIdBuku() {
         return idBuku;
     }
 
-    public void setIdBuku(String idBuku) {
+    public void setIdBuku(Integer idBuku) {
         this.idBuku = idBuku;
     }
 }

@@ -7,10 +7,37 @@ import java.util.Date;
 public class DataPeminjamanAnggotaDto {
     private String namaAnggota;
     private String pekerjaan;
+    private String judulBuku;
     @JsonFormat(shape =JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy")
     private Date tglPinjam;
     @JsonFormat(shape =JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy")
     private Date tglKembali;
+    private String namaPustakawan;
+    private String noHpPustakawan;
+
+    public String getJudulBuku() {
+        return judulBuku;
+    }
+
+    public void setJudulBuku(String judulBuku) {
+        this.judulBuku = judulBuku;
+    }
+
+    public String getNamaPustakawan() {
+        return namaPustakawan;
+    }
+
+    public void setNamaPustakawan(String namaPustakawan) {
+        this.namaPustakawan = namaPustakawan;
+    }
+
+    public String getNoHpPustakawan() {
+        return noHpPustakawan;
+    }
+
+    public void setNoHpPustakawan(String noHpPustakawan) {
+        this.noHpPustakawan = noHpPustakawan;
+    }
 
     public String getNamaAnggota() {
         return namaAnggota;

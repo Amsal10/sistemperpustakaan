@@ -3,17 +3,15 @@ package com.kelompok2.sistemperpustakaan.model.entity;
 import com.sun.istack.NotNull;
 import org.springframework.lang.NonNull;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
 @Table(name = "data_buku")
 public class Buku {
     @Id
+    @GeneratedValue(strategy = GenerationType.AUTO, generator = "seq_buku")
     @Column (name = "id_buku")
-    private String idBuku;
+    private Integer idBuku;
     @Column (name = "judul_buku")
     private String judulBuku;
     @Column (name = "penulis_buku")
@@ -27,11 +25,11 @@ public class Buku {
     @Column (name = "jml_buku")
     private Integer jmlBuku;
 
-    public String getIdBuku() {
+    public Integer getIdBuku() {
         return idBuku;
     }
 
-    public void setIdBuku(String idBuku) {
+    public void setIdBuku(Integer idBuku) {
         this.idBuku = idBuku;
     }
 
