@@ -25,21 +25,16 @@ public class PengembalianController {
     public DefaultResponse<PengembalianDto> savePengembalian(@RequestBody PengembalianDto pengembalianDto){
         Pengembalian pengembalian = convertDtoToEntity(pengembalianDto);
         DefaultResponse<PengembalianDto> response = new DefaultResponse();
-        Optional<Pengembalian> optionalPengembalian = pengembalianRepository.findById(pengembalianDto.getIdPengembalian());
-        if(optionalPengembalian.isPresent()){
-            response.setStatus(Boolean.FALSE);
-            response.setMessage("Error, data sudah tersedia");
-        } else {
-            pengembalianRepository.save(pengembalian);
-            response.setStatus(Boolean.TRUE);
-            response.setMessage("Data berhasil ditambahkan");
-        }
+
+        pengembalianRepository.save(pengembalian);
+        response.setStatus(Boolean.TRUE);
+        response.setMessage("Data berhasil ditambahkan");
+
         return response;
     }
 
     public Pengembalian convertDtoToEntity(PengembalianDto dto){
         Pengembalian pengembalian = new Pengembalian();
-        pengembalian.setIdPengembalian(dto.getIdPengembalian());
         pengembalian.setTglKembali(dto.getTglKembali());
         pengembalian.setJatuhTempo(dto.getJatuhTempo());
         pengembalian.setTotalDenda(dto.getTotalDenda());

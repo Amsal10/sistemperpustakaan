@@ -42,21 +42,16 @@ public class PustakawanController {
     public DefaultResponse<PustakawanDto> savePustakawan(@RequestBody PustakawanDto pustakawanDto) {
         Pustakawan pustakawan = convertDtoToEntity(pustakawanDto);
         DefaultResponse<PustakawanDto> response = new DefaultResponse();
-        Optional<Pustakawan> optionalPustakawan = pustakawanRepository.findById(pustakawanDto.getIdPustakawan());
-        if (optionalPustakawan.isPresent()) {
-            response.setStatus(Boolean.FALSE);
-            response.setMessage("Error, data sudah tersedia");
-        } else {
-            pustakawanRepository.save(pustakawan);
-            response.setStatus(Boolean.TRUE);
-            response.setMessage("Data berhasil ditambahkan");
-        }
+
+        pustakawanRepository.save(pustakawan);
+        response.setStatus(Boolean.TRUE);
+        response.setMessage("Data berhasil ditambahkan");
+
         return response;
     }
 
     public Pustakawan convertDtoToEntity(PustakawanDto dto) {
         Pustakawan pustakawan = new Pustakawan();
-        pustakawan.setIdPustakawan(dto.getIdPustakawan());
         pustakawan.setNamaPustakawan(dto.getNamaPustakawan());
         pustakawan.setJkPustakawan(dto.getJkPustakawan());
         pustakawan.setAlamatPustakawan(dto.getAlamatPustakawan());
