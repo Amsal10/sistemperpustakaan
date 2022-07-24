@@ -36,6 +36,7 @@ public class AnggotaController {
         }
         return response;
     }
+
 // mencari data anggota sesuai Id
     @GetMapping("/getbyid/{idAnggota}")
     public DataDto<AnggotaDto> getByIdAnggota(@PathVariable Integer idAnggota) {
