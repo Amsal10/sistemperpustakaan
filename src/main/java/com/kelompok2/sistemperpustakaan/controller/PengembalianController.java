@@ -1,8 +1,10 @@
 package com.kelompok2.sistemperpustakaan.controller;
 
 import com.kelompok2.sistemperpustakaan.model.dto.DefaultResponse;
+import com.kelompok2.sistemperpustakaan.model.dto.PengembalianAnggotaDto;
 import com.kelompok2.sistemperpustakaan.model.dto.PengembalianDto;
 import com.kelompok2.sistemperpustakaan.model.dto.PustakawanDto;
+import com.kelompok2.sistemperpustakaan.model.entity.Anggota;
 import com.kelompok2.sistemperpustakaan.model.entity.Buku;
 import com.kelompok2.sistemperpustakaan.model.entity.Pengembalian;
 import com.kelompok2.sistemperpustakaan.model.entity.Pustakawan;
@@ -116,5 +118,20 @@ public class PengembalianController {
             df.setMessage("Data Sudah Terdaftar");
         }
         return df;
+    }
+
+    @GetMapping("/pengembalianpustakawan/{idPengembalian}")
+    public PengembalianAnggotaDto getListPengembalianAnggota(@PathVariable Integer idPengembalian){
+        Optional<Pengembalian> optionalPengembalian = pengembalianRepository.findById(idPengembalian);
+        PengembalianAnggotaDto dto = new PengembalianAnggotaDto();
+        if(optionalPengembalian.isPresent()){
+            Pengembalian pengembalian = optionalPengembalian.get();
+            dto.setDenda(pengembalian.getTotalDenda());
+            dto.setNama(pengembalian.getPustakawan().getNamaPustakawan());
+        } else {
+
+        }
+
+        return dto;
     }
 }

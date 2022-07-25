@@ -25,6 +25,10 @@ public class Pengembalian {
     @Column (name = "id_buku")
     private String idBuku;
 
+    @OneToOne
+    @JoinColumn(name = "id_pustakawan", insertable = false, updatable = false)
+    private Pustakawan pustakawan;
+//
     public Integer getIdPengembalian() {
         return idPengembalian;
     }
@@ -79,5 +83,13 @@ public class Pengembalian {
 
     public void setIdBuku(String idBuku) {
         this.idBuku = idBuku;
+    }
+
+    public Pustakawan getPustakawan() {
+        return pustakawan;
+    }
+
+    public void setPustakawan(Pustakawan pustakawan) {
+        this.pustakawan = pustakawan;
     }
 }
