@@ -13,7 +13,7 @@ public interface BukuRepository extends JpaRepository<Buku, Long> {
 
     Optional<Buku> findByJudulBuku(String judulBuku);
 
-    @Query(value = "SELECT * FROM data_buku Where judul_buku LIKE %?1%", nativeQuery = true)
+    @Query(value = "SELECT * FROM data_buku WHERE LOWER (data_buku.judul_buku) LIKE %?1% OR LOWER (data_buku.penulis_buku) LIKE %?1% OR LOWER (data_buku.penerbit_buku) LIKE %?1% OR LOWER (data_buku.lokasi_rak) LIKE %?1%", nativeQuery = true)
     List<Buku> search (String search);
 
 }

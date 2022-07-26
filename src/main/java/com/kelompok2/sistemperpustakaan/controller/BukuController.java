@@ -99,7 +99,7 @@ public class BukuController {
     }
 
     @GetMapping("/judul/{search}")
-    public List<BukuDto> search(@PathVariable String search){
+    public List<BukuDto> search(@PathVariable String search) {
         List<BukuDto> list = new ArrayList();
         for(Buku buku :bukuRepository.search(search)){
             list.add(convertEntityToDto(buku));
