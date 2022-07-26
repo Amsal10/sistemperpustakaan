@@ -42,10 +42,15 @@ public class PustakawanController {
     public DefaultResponse<PustakawanDto> savePustakawan(@RequestBody PustakawanDto pustakawanDto) {
         Pustakawan pustakawan = convertDtoToEntity(pustakawanDto);
         DefaultResponse<PustakawanDto> response = new DefaultResponse();
-
-        pustakawanRepository.save(pustakawan);
-        response.setStatus(Boolean.TRUE);
-        response.setMessage("Data berhasil ditambahkan");
+        Optional<Pustakawan> optional = pustakawanRepository.findByUsernamePustakawanAndPasswordPustakawan(pustakawanDto.getUsernamePustakawan(), pustakawanDto.getPasswordPustakawan());
+        if(optional.isPresent()){
+            response.setStatus(Boolean.FALSE);
+            response.setMessage("Username dan password sudah digunakan, coba menggunakan kata yang lain");
+        } else {
+            pustakawanRepository.save(pustakawan);
+            response.setStatus(Boolean.TRUE);
+            response.setMessage("Data berhasil ditambahkan");
+        }
 
         return response;
     }
