@@ -98,6 +98,15 @@ public class BukuController {
         return data;
     }
 
+    @GetMapping("/judul/{search}")
+    public List<BukuDto> search(@PathVariable String search){
+        List<BukuDto> list = new ArrayList();
+        for(Buku buku :bukuRepository.search(search)){
+            list.add(convertEntityToDto(buku));
+        }
+        return list;
+    }
+
 
 
 // menghapus data buku dari table  --/buku/delete/{idbuku}
