@@ -1,8 +1,5 @@
 package com.kelompok2.sistemperpustakaan.model.entity;
 
-import com.sun.istack.NotNull;
-import org.springframework.lang.NonNull;
-
 import javax.persistence.*;
 
 @Entity
@@ -24,6 +21,29 @@ public class Buku {
     private String lokasiRak;
     @Column (name = "jml_buku")
     private Integer jmlBuku;
+
+    @Column (name = "id_admin")
+    private Integer idAdmin;
+
+    @ManyToOne
+    @JoinColumn(name = "id_Admin", insertable = false, updatable = false)
+    private Admin admin;
+
+    public Integer getIdAdminn() {
+        return idAdmin;
+    }
+
+    public void setIdAdminn(Integer idAdminn) {
+        this.idAdmin = idAdminn;
+    }
+
+    public Admin getAdminBuku() {
+        return admin;
+    }
+
+    public void setAdminBuku(Admin adminBuku) {
+        this.admin = admin;
+    }
 
     public Integer getIdBuku() {
         return idBuku;

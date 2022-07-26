@@ -74,7 +74,7 @@ public class BukuController {
     }
 // menampilkan buku berdasarkan id --/buku/getbyid/{idbuku}
     @GetMapping("/getbyid/{idBuku}")
-    public DataDto<BukuDto> getByIdAnggota(@PathVariable Integer idBuku) {
+    public DataDto<BukuDto> getByIdBuku(@PathVariable Integer idBuku) {
         DataDto<BukuDto> data = new DataDto<>();
         Optional<Buku> opt = bukuRepository.findByIdBuku(idBuku);
         if (opt.isPresent()) {
@@ -85,6 +85,20 @@ public class BukuController {
         }
         return data;
     }
+    @GetMapping("/getbyjudul/{judulBuku}")
+    public DataDto<BukuDto> getByJudulBuku(@PathVariable String judulBuku) {
+        DataDto<BukuDto> data = new DataDto<>();
+        Optional<Buku> opt = bukuRepository.findByJudulBuku(judulBuku);
+        if (opt.isPresent()) {
+            data.setMessage("Data Ditemukan");
+            data.setData(convertEntityToDto(opt.get()));
+        } else {
+            data.setMessage("Data Tidak Ditemukan");
+        }
+        return data;
+    }
+
+
 
 // menghapus data buku dari table  --/buku/delete/{idbuku}
     @DeleteMapping("/delete/{idBuku}")

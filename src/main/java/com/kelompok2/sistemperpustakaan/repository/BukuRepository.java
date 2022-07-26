@@ -9,4 +9,6 @@ public interface BukuRepository extends JpaRepository<Buku, Long> {
 
     Optional<Buku> findByIdBuku (Integer idBuku);
 
+    Optional<Buku> findByJudulBuku(String judulBuku);
+
 }

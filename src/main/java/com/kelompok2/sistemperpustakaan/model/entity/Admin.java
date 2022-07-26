@@ -9,12 +9,24 @@ public class Admin {
     @GeneratedValue(strategy = GenerationType.AUTO, generator = "seq_admin")
     @Column(name = " id_admin")
     private Integer idAdmin;
+
+    @Column(name = "nama_admin")
+    private String namaAdmin;
+
     @Column(name = "username")
     private String usernameAdmin;
     @Column(name = "password")
     private String passwordAdmin;
     @Column(name = "status_admin")
     private String statusAdmin;
+
+    public String getNamaAdmin() {
+        return namaAdmin;
+    }
+
+    public void setNamaAdmin(String namaAdmin) {
+        this.namaAdmin = namaAdmin;
+    }
 
     public Integer getIdAdmin() {
         return idAdmin;
