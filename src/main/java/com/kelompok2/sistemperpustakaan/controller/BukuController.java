@@ -3,6 +3,8 @@ package com.kelompok2.sistemperpustakaan.controller;
 import com.kelompok2.sistemperpustakaan.model.dto.BukuDto;
 import com.kelompok2.sistemperpustakaan.model.dto.DataDto;
 import com.kelompok2.sistemperpustakaan.model.dto.DefaultResponse;
+import com.kelompok2.sistemperpustakaan.model.dto.projection.TotalBayar;
+import com.kelompok2.sistemperpustakaan.model.dto.projection.TotalBuku;
 import com.kelompok2.sistemperpustakaan.model.entity.Buku;
 import com.kelompok2.sistemperpustakaan.repository.BukuRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -98,16 +100,21 @@ public class BukuController {
         return data;
     }
 
-    @GetMapping("/judul/{search}")
+    @GetMapping("/search/{search}")
     public List<BukuDto> search(@PathVariable String search) {
+        String convertString = String.valueOf(search);
         List<BukuDto> list = new ArrayList();
         for(Buku buku :bukuRepository.search(search)){
             list.add(convertEntityToDto(buku));
         }
         return list;
     }
+    @GetMapping("/totalbuku")
+    public List<TotalBuku> getTotalBayar(){
+        List<TotalBuku> list = bukuRepository.getListTotalBuku();
 
-
+        return list;
+    }
 
 // menghapus data buku dari table  --/buku/delete/{idbuku}
     @DeleteMapping("/delete/{idBuku}")
