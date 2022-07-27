@@ -26,7 +26,7 @@ public class Buku {
     private Integer idAdmin;
 
     @ManyToOne
-    @JoinColumn(name = "id_Admin", insertable = false, updatable = false)
+    @JoinColumn(name = "id_admin", insertable = false, updatable = false)
     private Admin admin;
 
     public Integer getIdAdminn() {

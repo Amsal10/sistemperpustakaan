@@ -3,11 +3,8 @@ package com.kelompok2.sistemperpustakaan.controller;
 import com.kelompok2.sistemperpustakaan.model.dto.DefaultResponse;
 import com.kelompok2.sistemperpustakaan.model.dto.PengembalianAnggotaDto;
 import com.kelompok2.sistemperpustakaan.model.dto.PengembalianDto;
-import com.kelompok2.sistemperpustakaan.model.dto.PustakawanDto;
-import com.kelompok2.sistemperpustakaan.model.entity.Anggota;
-import com.kelompok2.sistemperpustakaan.model.entity.Buku;
+import com.kelompok2.sistemperpustakaan.model.dto.projection.TotalBayar;
 import com.kelompok2.sistemperpustakaan.model.entity.Pengembalian;
-import com.kelompok2.sistemperpustakaan.model.entity.Pustakawan;
 import com.kelompok2.sistemperpustakaan.repository.PengembalianRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -133,5 +130,12 @@ public class PengembalianController {
         }
 
         return dto;
+    }
+
+    @GetMapping("/totalbayar")
+    public List<TotalBayar> getTotalBayar(){
+        List<TotalBayar> list = pengembalianRepository.getTotalBayar();
+
+        return list;
     }
 }
