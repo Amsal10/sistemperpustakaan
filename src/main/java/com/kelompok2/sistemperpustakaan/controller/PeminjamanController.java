@@ -1,11 +1,8 @@
 package com.kelompok2.sistemperpustakaan.controller;
 
-import com.kelompok2.sistemperpustakaan.model.dto.DataPeminjamanAnggotaDto;
-import com.kelompok2.sistemperpustakaan.model.dto.DefaultResponse;
-import com.kelompok2.sistemperpustakaan.model.dto.PeminjamanDto;
-import com.kelompok2.sistemperpustakaan.model.entity.Anggota;
+import com.kelompok2.sistemperpustakaan.model.dto.*;
+import com.kelompok2.sistemperpustakaan.model.dto.projection.PemberitahuanPeminjaman;
 import com.kelompok2.sistemperpustakaan.model.entity.Peminjaman;
-import com.kelompok2.sistemperpustakaan.repository.AnggotaRepository;
 import com.kelompok2.sistemperpustakaan.repository.PeminjamanRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -19,24 +16,28 @@ import java.util.Optional;
 public class PeminjamanController {
     @Autowired
     PeminjamanRepository peminjamanRepository;
-    @Autowired
-    AnggotaRepository anggotaRepository;
 
-    //join table getbyidAnggota oneToOne Table
-//    @GetMapping("/listPeminjaman/{idPeminjamn}")
-//    public List<DataPeminjamanAnggotaDto> getListDataPeminjaman(@PathVariable Integer idPeminjamn) {
-//        List<DataPeminjamanAnggotaDto> listDto = new ArrayList<>();
-//        Optional<Peminjaman> optPem = peminjamanRepository.findByIdPeminjaman(idPeminjamn);
-//        for(Peminjaman peminjaman : peminjamanRepository.findAll()){
-////            listDto.add(convertEntityToDto(peminjaman));
+//    @GetMapping("/search/{idAnggota}")
+//    public List<BukuDto> search(@PathVariable Integer idAnggota) {
+////        String convertString = String.valueOf(search);
+//        List<BukuDto> list = new ArrayList();
+//        for(Peminjaman peminjaman :peminjamanRepository.searchIdAnggota(idAnggota)){
+//            list.add(convertEntityToDto(peminjaman));
+//
 //        }
-//        return listDto;
+//        return list;
 //    }
 
+    @GetMapping("/listSetPengembalianBuku")
+    public List<PemberitahuanPeminjaman> searchPeminjaman(){
+        List<PemberitahuanPeminjaman> listDto = peminjamanRepository.notifPeminjaman();
+
+        return listDto;
+    }
     @GetMapping("/pemberitahuanPeminjaman/{idPeminjaman}")
-    public DataPeminjamanAnggotaDto getListHistoryPeminjaman(@PathVariable Integer idPeminjaman) {
+    public PeminjamanAnggotaDto getListHistoryPeminjaman(@PathVariable Integer idPeminjaman) {
         Optional<Peminjaman> optPem = peminjamanRepository.findByIdPeminjaman(idPeminjaman);
-        DataPeminjamanAnggotaDto dto = new DataPeminjamanAnggotaDto();
+        PeminjamanAnggotaDto dto = new PeminjamanAnggotaDto();
         if (optPem.isPresent()) {
             Peminjaman peminjaman = optPem.get();
             dto.setNamaAnggota(peminjaman.getAnggotaPeminjaman().getNamaAnggota());
@@ -49,8 +50,6 @@ public class PeminjamanController {
         }
         return dto;
     }
-
-
     @PostMapping("/save")
     public DefaultResponse<PeminjamanDto> createDataPeminjaman(@RequestBody PeminjamanDto pemDto){
         Peminjaman peminjaman = convertDtoToEntity(pemDto);
@@ -75,7 +74,6 @@ public class PeminjamanController {
         }
         return listPeminjaman;
     }
-
     public Peminjaman convertDtoToEntity(PeminjamanDto peminjamanDto){
         Peminjaman peminjaman = new Peminjaman();
         peminjaman.setIdAnggota(peminjamanDto.getIdAnggota());
@@ -86,7 +84,6 @@ public class PeminjamanController {
         peminjaman.setTglKembali(peminjamanDto.getTglKembali());
         return peminjaman;
     }
-
     public PeminjamanDto convertEntityToDto(Peminjaman entity){
         PeminjamanDto dto = new PeminjamanDto();
         dto.setIdAnggota(entity.getIdAnggota());

@@ -4,7 +4,7 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 
 import java.util.Date;
 
-public class DataPeminjamanAnggotaDto {
+public class PeminjamanAnggotaDto {
     private String namaAnggota;
     private String pekerjaan;
     private String judulBuku;
@@ -54,7 +54,6 @@ public class DataPeminjamanAnggotaDto {
     public void setPekerjaan(String pekerjaan) {
         this.pekerjaan = pekerjaan;
     }
-
     public Date getTglPinjam() {
         return tglPinjam;
     }
