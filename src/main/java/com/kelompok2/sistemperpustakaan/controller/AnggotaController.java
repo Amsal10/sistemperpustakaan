@@ -3,7 +3,6 @@ package com.kelompok2.sistemperpustakaan.controller;
 import com.kelompok2.sistemperpustakaan.model.dto.*;
 import com.kelompok2.sistemperpustakaan.model.entity.Anggota;
 import com.kelompok2.sistemperpustakaan.repository.AnggotaRepository;
-import com.kelompok2.sistemperpustakaan.repository.PeminjamanRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -17,8 +16,21 @@ public class AnggotaController {
 
     @Autowired
     AnggotaRepository anggotaRepository;
-    @Autowired
-    PeminjamanRepository peminjamanRepository;
+
+    @PostMapping("/loginAnggota")
+    public DefaultResponse loginAnggota(@RequestBody LoginDto loginDto){
+        Optional<Anggota> optionalAnggota = anggotaRepository.findByUserNameAndPasswordAnggota(loginDto.getUname(), loginDto.getPass());
+        DefaultResponse df = new DefaultResponse();
+        if (optionalAnggota.isPresent()) {
+            df.setMessage("Login berhasil");
+            df.setStatus(Boolean.TRUE);
+
+        } else {
+            df.setMessage("Maaf username dan password salah");
+            df.setStatus(Boolean.FALSE);
+        }
+        return df;
+    }
 
     // Insert Data diri Anggota
     @PostMapping("/save")
