@@ -140,6 +140,9 @@ public class BukuController {
         if (optionalBuku.isPresent()) {
             book.setJudulBuku(bukuDto.getJudulBuku());
             book.setPenulisBuku(bukuDto.getPenulisBuku());
+            book.setLokasiRak(bukuDto.getLokasiRak());
+            book.setTahunTerbit(bukuDto.getTahunTerbit());
+            book.setJmlBuku(bukuDto.getJmlBuku());
             bukuRepository.save(book);
             df.setStatus(Boolean.TRUE);
 //            df.setData(bukuDto);

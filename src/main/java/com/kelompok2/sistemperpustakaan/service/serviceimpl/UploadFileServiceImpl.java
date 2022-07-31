@@ -1,7 +1,8 @@
-package com.kelompok2.sistemperpustakaan.service;
+package com.kelompok2.sistemperpustakaan.service.serviceimpl;
 
 import com.kelompok2.sistemperpustakaan.model.entity.UploadFile;
 import com.kelompok2.sistemperpustakaan.repository.UploadFileRepository;
+import com.kelompok2.sistemperpustakaan.service.UploadFileService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
