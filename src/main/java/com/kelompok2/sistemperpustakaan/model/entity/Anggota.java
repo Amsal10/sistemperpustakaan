@@ -7,7 +7,15 @@ import javax.persistence.*;
 
 public class Anggota {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @SequenceGenerator(
+            name="anggota_seq",
+            sequenceName="anggota_seq",
+            allocationSize = 1
+    )
+    @GeneratedValue(
+            strategy = GenerationType.SEQUENCE,
+            generator = "anggota_seq"
+    )
     @Column(name = "id_Anggota", length  = 5)
     private Integer idAnggota;
     @Column(name = "user_Name", unique = true)

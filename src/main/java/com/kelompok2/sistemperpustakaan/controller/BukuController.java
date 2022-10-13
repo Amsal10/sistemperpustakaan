@@ -3,13 +3,11 @@ package com.kelompok2.sistemperpustakaan.controller;
 import com.kelompok2.sistemperpustakaan.model.dto.BukuDto;
 import com.kelompok2.sistemperpustakaan.model.dto.DataDto;
 import com.kelompok2.sistemperpustakaan.model.dto.DefaultResponse;
-import com.kelompok2.sistemperpustakaan.model.dto.projection.TotalBayar;
 import com.kelompok2.sistemperpustakaan.model.dto.projection.TotalBuku;
 import com.kelompok2.sistemperpustakaan.model.entity.Buku;
 import com.kelompok2.sistemperpustakaan.repository.BukuRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -35,9 +33,9 @@ public class BukuController {
             response.setStatus(Boolean.TRUE);
             response.setMessage("Berhasil Simpan Data");
         }
-
         return response;
     }
+
     public Buku convertDtoToEntity(BukuDto dto){
         Buku buku = new Buku();
         buku.setIdBuku(dto.getIdBuku());
@@ -47,7 +45,6 @@ public class BukuController {
         buku.setTahunTerbit(dto.getTahunTerbit());
         buku.setLokasiRak(dto.getLokasiRak());
         buku.setJmlBuku(dto.getJmlBuku());
-
         return buku;
     }
 
@@ -71,7 +68,6 @@ public class BukuController {
         dto.setTahunTerbit(entity.getTahunTerbit());
         dto.setLokasiRak(entity.getLokasiRak());
         dto.setJmlBuku(entity.getJmlBuku());
-
         return dto;
     }
 // menampilkan buku berdasarkan id --/buku/getbyid/{idbuku}
@@ -112,7 +108,6 @@ public class BukuController {
     @GetMapping("/totalbuku")
     public List<TotalBuku> getTotalBayar(){
         List<TotalBuku> list = bukuRepository.getListTotalBuku();
-
         return list;
     }
 
@@ -153,6 +148,4 @@ public class BukuController {
         }
         return df;
     }
-
-
 }

@@ -10,9 +10,11 @@ import java.util.Optional;
 
 public interface PeminjamanRepository extends JpaRepository<Peminjaman, Long > {
     Optional<Peminjaman> findByIdPeminjaman(Integer idPeminjaman);
-    @Query(value = "SELECT id_anggota, id_buku, tgl_pinjam, tgl_pinjam +interval'60 days'as pengembalian_buku FROM data_peminjaman", nativeQuery = true)
+
+    Optional<Peminjaman> findByIdAnggota(Integer idAnggota);
+    @Query(value = "SELECT id_anggota, id_buku, tgl_pinjam, 600tgl_pinjam +interval'60 days'as pengembalian_buku FROM data_peminjaman", nativeQuery = true)
     List<PemberitahuanPeminjaman> notifPeminjaman();
 
-    @Query(value = "SELECT id_anggota, id_buku, tgl_pinjam, tgl_pinjam +interval'60 days'as pengembalian_buku FROM data_peminjaman WHERE ", nativeQuery = true)
-    List<PemberitahuanPeminjaman> notifPeminjamanById();
+//    @Query(value = "SELECT id_anggota, id_buku, tgl_pinjam, tgl_pinjam +interval'60 days'as pengembalian_buku FROM data_peminjaman WHERE ", nativeQuery = true)
+//    List<PemberitahuanPeminjaman> notifPeminjamanById();
 }

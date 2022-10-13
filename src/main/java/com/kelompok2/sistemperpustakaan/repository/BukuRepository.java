@@ -12,11 +12,11 @@ public interface BukuRepository extends JpaRepository<Buku, Long> {
 
     Optional<Buku> findByIdBuku (Integer idBuku);
 
+    @Query(value = "SELECT id_buku, judul_buku, jml_buku + jml_buku as total_buku FROM data_buku", nativeQuery = true)
+    List<TotalBuku> getListTotalBuku();
+
     Optional<Buku> findByJudulBuku(String judulBuku);
 
     @Query(value = "SELECT * FROM data_buku WHERE LOWER (data_buku.judul_buku) LIKE %?1% OR LOWER (data_buku.penulis_buku) LIKE %?1% OR LOWER (data_buku.penerbit_buku) LIKE %?1% OR LOWER (data_buku.lokasi_rak) LIKE %?1%", nativeQuery = true)
     List<Buku> search (String search);
-    @Query(value = "SELECT id_buku, judul_buku, jml_buku + jml_buku as total_buku FROM data_buku", nativeQuery = true)
-    List<TotalBuku> getListTotalBuku();
-
 }

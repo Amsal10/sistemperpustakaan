@@ -1,5 +1,7 @@
 package com.kelompok2.sistemperpustakaan.model.entity;
 
+import org.hibernate.annotations.CreationTimestamp;
+
 import javax.persistence.*;
 import javax.persistence.criteria.CriteriaBuilder;
 import java.util.Date;
@@ -11,17 +13,10 @@ public class Peminjaman {
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column (name = "id_peminjaman", length = 5)
     private Integer idPeminjaman;
+//    @CreationTimestamp
+//    @Temporal(TemporalType.DATE)
     @Column (name = "tgl_pinjam")
     private Date tglPinjam;
-
-    public Integer getIdBuku() {
-        return idBuku;
-    }
-
-    public void setIdBuku(Integer idBuku) {
-        this.idBuku = idBuku;
-    }
-
     @Column (name = "tgl_kembali")
     private Date tglKembali;
     @Column (name = "id_pustakawan")
@@ -30,7 +25,6 @@ public class Peminjaman {
     private Integer idAnggota;
     @Column (name = "id_buku")
     private Integer idBuku;
-
     @OneToOne
     @JoinColumn(name="id_anggota", insertable = false, updatable = false)
     private Anggota anggotaPeminjaman;
@@ -39,6 +33,14 @@ public class Peminjaman {
     @JoinColumn(name="id_pustakawan", insertable = false, updatable = false)
     private Pustakawan pustakawanPeminjaman;
 
+
+    public Integer getIdBuku() {
+        return idBuku;
+    }
+
+    public void setIdBuku(Integer idBuku) {
+        this.idBuku = idBuku;
+    }
 
     public Pustakawan getPustakawanPeminjaman() {
         return pustakawanPeminjaman;
